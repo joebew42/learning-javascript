@@ -4,7 +4,7 @@ class BowlingGame {
   }
 
   score() {
-    return -1;
+    return 0;
   }
 }
 
