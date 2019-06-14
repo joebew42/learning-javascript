@@ -19,7 +19,7 @@ class BowlingGame {
         score += 10 + this._strikeBonus(frameIndex);
         frameIndex += 1;
       } else if (this._isSpare(frameIndex)) {
-        score += 10 + this._rolls[frameIndex + 2];
+        score += 10 + this._spareBonus(frameIndex);
         frameIndex += 2;
       } else {
         score += this._rolls[frameIndex] +
@@ -33,6 +33,10 @@ class BowlingGame {
 
   _strikeBonus(frameIndex) {
     return this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
+  }
+
+  _spareBonus(frameIndex) {
+    return this._rolls[frameIndex + 2];
   }
 
   _isSpare(frameIndex) {
