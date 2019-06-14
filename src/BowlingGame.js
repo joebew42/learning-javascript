@@ -15,7 +15,11 @@ class BowlingGame {
     var i = 0;
 
     for (var frame = 0; frame < 10; frame++) {
-      score += this._rolls[i] + this._rolls[i + 1];
+      if (this._rolls[i] + this._rolls[i + 1] == 10) { // Is a spare
+        score += 10 + this._rolls[i + 2];
+      } else {
+        score += this._rolls[i] + this._rolls[i + 1];
+      }
       i += 2;
     }
 
