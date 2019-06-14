@@ -1,7 +1,9 @@
+const ROLLS = 21;
+
 class BowlingGame {
   constructor() {
     this._currentRoll = 0;
-    this._rolls = Array(21).fill(0)
+    this._rolls = Array(ROLLS).fill(0)
   }
 
   roll(pins) {
@@ -11,7 +13,7 @@ class BowlingGame {
   score() {
     var score = 0;
 
-    for (var i = 0; i < this._rolls.length; i++) {
+    for (var i = 0; i < ROLLS; i++) {
       score += this._rolls[i];
     }
 
