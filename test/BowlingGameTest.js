@@ -22,13 +22,17 @@ describe("BowlingGame", () => {
   });
 
   it("one spare", () => {
-    game.roll(5);
-    game.roll(5); // Spare!
+    rollSpare()
     game.roll(3);
     rollMany(17, 0);
 
     assert.equal(game.score(), 16);
   });
+
+  function rollSpare() {
+    game.roll(5);
+    game.roll(5);
+  }
 
   function rollMany(n, pins) {
     var i;
@@ -37,5 +41,3 @@ describe("BowlingGame", () => {
     }
   }
 });
-
-
