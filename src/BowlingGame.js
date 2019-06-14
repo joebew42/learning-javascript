@@ -15,7 +15,7 @@ class BowlingGame {
     var frameIndex = 0;
 
     for (var frame = 0; frame < 10; frame++) {
-      if (this._rolls[frameIndex] == 10) { // Is a Strike
+      if (this._isStrike(frameIndex)) {
         score += 10 + this._strikeBonus(frameIndex);
         frameIndex += 1;
       } else if (this._isSpare(frameIndex)) {
@@ -28,6 +28,10 @@ class BowlingGame {
     }
 
     return score;
+  }
+
+  _isStrike(frameIndex) {
+    return this._rolls[frameIndex] == 10;
   }
 
   _strikeBonus(frameIndex) {
