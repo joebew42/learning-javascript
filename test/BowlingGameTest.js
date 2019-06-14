@@ -4,9 +4,13 @@ import BowlingGame from '../src/BowlingGame'
 
 
 describe("BowlingGame", () => {
-  it("gutter game", () => {
-    var game = new BowlingGame();
+  var game;
 
+  beforeEach(() => {
+    game = new BowlingGame();
+  });
+
+  it("gutter game", () => {
     var i;
     for (i = 0; i < 20; i++) {
       game.roll(0);
@@ -16,8 +20,6 @@ describe("BowlingGame", () => {
   });
 
   it("all ones", () => {
-    var game = new BowlingGame();
-
     var i;
     for (i = 0; i < 20; i++) {
       game.roll(1);
