@@ -1,11 +1,11 @@
 var expect = require('chai').expect;
 
-var HelloWorld = require('../src/hello_world');
+import HelloWorld from '../src/HelloWorld'
 
 describe("HelloWorld", () => {
   describe("sayHello", () => {
     it("return Hello World", () => {
-      helloWorld = new HelloWorld();
+      var helloWorld = new HelloWorld();
 
       expect(helloWorld.sayHello()).to.equal("Hello World");
     });
