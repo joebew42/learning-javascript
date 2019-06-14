@@ -22,8 +22,7 @@ class BowlingGame {
         score += 10 + this._spareBonus(frameIndex);
         frameIndex += 2;
       } else {
-        score += this._rolls[frameIndex] +
-                 this._rolls[frameIndex + 1];
+        score += this._sumOfAllBallsInFrame(frameIndex);
         frameIndex += 2;
       }
     }
@@ -35,12 +34,16 @@ class BowlingGame {
     return this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
   }
 
+  _isSpare(frameIndex) {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1] == 10
+  }
+
   _spareBonus(frameIndex) {
     return this._rolls[frameIndex + 2];
   }
 
-  _isSpare(frameIndex) {
-    return this._rolls[frameIndex] + this._rolls[frameIndex + 1] == 10
+  _sumOfAllBallsInFrame(frameIndex) {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1];
   }
 }
 
