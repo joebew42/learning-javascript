@@ -38,6 +38,12 @@ describe("BowlingGame", () => {
     assert.equal(game.score(), 24);
   });
 
+  it("perfect game", () => {
+    rollMany(12, 10);
+
+    assert.equal(game.score(), 300);
+  });
+
   function rollStrike() {
     game.roll(10);
   }
