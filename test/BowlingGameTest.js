@@ -29,6 +29,15 @@ describe("BowlingGame", () => {
     assert.equal(game.score(), 16);
   });
 
+  it("one strike", () => {
+    game.roll(10);
+    game.roll(3);
+    game.roll(4);
+    rollMany(16, 0);
+
+    assert.equal(game.score(), 24);
+  });
+
   function rollSpare() {
     game.roll(5);
     game.roll(5);
