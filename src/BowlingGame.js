@@ -9,7 +9,13 @@ class BowlingGame {
   }
 
   score() {
-    return this._rolls.reduce((acc, curr) => { return acc + curr });
+    var score = 0;
+
+    for (var i = 0; i < this._rolls.length; i++) {
+      score += this._rolls[i];
+    }
+
+    return score;
   }
 }
 
