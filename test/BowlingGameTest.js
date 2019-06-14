@@ -22,6 +22,15 @@ describe("BowlingGame", () => {
     assert.equal(game.score(), 20);
   });
 
+  it("one spare", () => {
+    game.roll(5);
+    game.roll(5); // Spare!
+    game.roll(3);
+    rollMany(17, 0);
+
+    assert.equal(game.score(), 16);
+  });
+
   function rollMany(n, pins) {
     var i;
     for (i = 0; i < n; i++) {
