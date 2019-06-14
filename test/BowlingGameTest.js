@@ -11,22 +11,23 @@ describe("BowlingGame", () => {
   });
 
   it("gutter game", () => {
-    var i;
-    for (i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    rollMany(20, 0);
 
     assert.equal(game.score(), 0);
   });
 
   it("all ones", () => {
-    var i;
-    for (i = 0; i < 20; i++) {
-      game.roll(1);
-    }
+    rollMany(20, 1)
 
     assert.equal(game.score(), 20);
   });
+
+  function rollMany(n, pins) {
+    var i;
+    for (i = 0; i < n; i++) {
+      game.roll(pins);
+    }
+  }
 });
 
 
