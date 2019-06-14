@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var helloWorld = require('./hello_world');
+var helloWorld = require('../src/hello_world');
 
 describe("HelloWorld", () => {
   describe("sayHello", () => {
