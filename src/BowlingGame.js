@@ -15,12 +15,20 @@ class BowlingGame {
     var frameIndex = 0;
 
     for (var frame = 0; frame < 10; frame++) {
+      if (this._rolls[frameIndex] == 10) { // Is a Strike
+        score += 10 +
+                 this._rolls[frameIndex + 1] +
+                 this._rolls[frameIndex + 2];
+        frameIndex += 1;
+      }
       if (this._isSpare(frameIndex)) {
         score += 10 + this._rolls[frameIndex + 2];
+        frameIndex += 2;
       } else {
-        score += this._rolls[frameIndex] + this._rolls[frameIndex + 1];
+        score += this._rolls[frameIndex] +
+                 this._rolls[frameIndex + 1];
+        frameIndex += 2;
       }
-      frameIndex += 2;
     }
 
     return score;
