@@ -1,0 +1,19 @@
+{
+  "name": "learning-javascript",
+  "version": "1.0.0",
+  "description": "My journey in trying to learn something about JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joebew42/learning-javascript.git"
+  },
+  "author": "joebew42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joebew42/learning-javascript/issues"
+  },
+  "homepage": "https://github.com/joebew42/learning-javascript#readme"
+}
