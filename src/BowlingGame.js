@@ -1,4 +1,6 @@
 class BowlingGame {
+  constructor() {}
+
   roll(pins) {
 
   }

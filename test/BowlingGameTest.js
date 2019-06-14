@@ -14,6 +14,17 @@ describe("BowlingGame", () => {
 
     assert.equal(game.score(), 0);
   });
+
+  it("all ones", () => {
+    var game = new BowlingGame();
+
+    var i;
+    for (i = 0; i < 20; i++) {
+      game.roll(1);
+    }
+
+    assert.equal(game.score(), 20);
+  });
 });
 
 
