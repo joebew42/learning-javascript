@@ -2,7 +2,6 @@ var assert = require('chai').assert
 
 import BowlingGame from '../src/BowlingGame'
 
-
 describe("BowlingGame", () => {
   var game;
 
