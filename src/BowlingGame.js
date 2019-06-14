@@ -12,9 +12,11 @@ class BowlingGame {
 
   score() {
     var score = 0;
+    var i = 0;
 
-    for (var i = 0; i < ROLLS; i++) {
-      score += this._rolls[i];
+    for (var frame = 0; frame < 10; frame++) {
+      score += this._rolls[i] + this._rolls[i + 1];
+      i += 2;
     }
 
     return score;
