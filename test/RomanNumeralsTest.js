@@ -28,4 +28,8 @@ describe("RomanNumerals", () => {
   it("converts 5 to V", () => {
     assert.equal(romanNumerals.convert(5), "V");
   })
+
+  it("converts 6 to VI", () => {
+    assert.equal(romanNumerals.convert(6), "VI");
+  })
 });
