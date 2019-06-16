@@ -16,4 +16,8 @@ describe("RomanNumerals", () => {
   it("converts 2 to II", () => {
     assert.equal(romanNumerals.convert(2), "II");
   })
+
+  it("converts 3 to III", () => {
+    assert.equal(romanNumerals.convert(3), "III");
+  })
 });
