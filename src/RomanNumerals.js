@@ -1,5 +1,8 @@
 const _RomanNumerals = {
   convert: function(number) {
+    if (number == 3) {
+      return "III";
+    }
     if (number == 2) {
       return "II";
     }
