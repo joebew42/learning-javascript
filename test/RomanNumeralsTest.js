@@ -32,4 +32,20 @@ describe("RomanNumerals", () => {
   it("converts 6 to VI", () => {
     assert.equal(romanNumerals.convert(6), "VI");
   })
+
+  it("converts 7 to VII", () => {
+    assert.equal(romanNumerals.convert(7), "VII");
+  })
+
+  it("converts 8 to VIII", () => {
+    assert.equal(romanNumerals.convert(8), "VIII");
+  })
+
+  it("converts 9 to IX", () => {
+    assert.equal(romanNumerals.convert(9), "IX");
+  })
+
+  it("converts 10 to X", () => {
+    assert.equal(romanNumerals.convert(10), "X");
+  })
 });
