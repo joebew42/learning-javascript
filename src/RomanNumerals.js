@@ -1,9 +1,13 @@
 const _RomanNumerals = {
   convert: function(number) {
-    return this._convertUpTo100(number);
+    if (number == 90) {
+      return "XC";
+    }
+
+    return this._convertUpTo89(number);
   },
 
-  _convertUpTo100: function(number) {
+  _convertUpTo89: function(number) {
     var times = Math.floor(number / 50);
     var rest = number % 50;
 

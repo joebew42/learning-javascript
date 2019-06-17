@@ -25,11 +25,14 @@ describe("RomanNumerals", () => {
     15: "XV",
     19: "XIX",
     20: "XX",
+    30: "XXX",
     49: "XLIX",
     50: "L",
     60: "LX",
     70: "LXX",
-    79: "LXXIX"
+    79: "LXXIX",
+    80: "LXXX",
+    90: "XC",
   }
 
   for (var number in romans) {
