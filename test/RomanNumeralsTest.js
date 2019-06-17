@@ -22,6 +22,9 @@ describe("RomanNumerals", () => {
     10: "X",
     11: "XI",
     12: "XII",
+    15: "XV",
+    19: "XIX",
+    20: "XX",
   }
 
   for (var number in romans) {
