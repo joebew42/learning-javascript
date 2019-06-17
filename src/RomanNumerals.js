@@ -1,10 +1,12 @@
 const _RomanNumerals = {
   convert: function(number) {
-    if (number == 90) {
-      return "XC";
-    }
+    return this._convertUpTo99(number);
+  },
 
-    return this._convertUpTo89(number);
+  _convertUpTo99: function(number) {
+    var rest = number % 90;
+
+    return "XC" + this._convertUpTo89(rest);
   },
 
   _convertUpTo89: function(number) {
