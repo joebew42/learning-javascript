@@ -1,14 +1,16 @@
 const _RomanNumerals = {
   convert: function(number) {
-    if (number == 12) {
-      return "XII";
-    }
-    if (number == 11) {
-      return "XI";
-    }
-    if (number == 10) {
-      return "X";
-    }
+    return this._convertTens(number);
+  },
+
+  _convertTens: function(number) {
+    var times = Math.floor(number / 10);
+    var rest = number % 10;
+
+    return "X".repeat(times) + this._convertUnits(rest)
+  },
+
+  _convertUnits: function(number) {
     if (number == 9) {
       return "IX";
     }
