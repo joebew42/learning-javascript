@@ -35,7 +35,10 @@ const _RomanNumerals = {
     if (number == 2) {
       return "II";
     }
-    return "I";
+    if (number == 1) {
+      return "I";
+    }
+    return "";
   }
 }
 
