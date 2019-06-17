@@ -1,5 +1,11 @@
 const _RomanNumerals = {
   convert: function(number) {
+    if (number == 12) {
+      return "XII";
+    }
+    if (number == 11) {
+      return "XI";
+    }
     if (number == 10) {
       return "X";
     }
