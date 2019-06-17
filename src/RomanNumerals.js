@@ -4,20 +4,17 @@ const _RomanNumerals = {
   },
 
   _convertUpTo100: function(number) {
-    if (number == 60) {
-      return "LX";
-    } else {
-      return this._convertUpTo50(number);
-    }
+    var times = Math.floor(number / 50);
+    var rest = number % 50;
+
+    return "L".repeat(times) + this._convertUpTo49(rest);
   },
 
-  _convertUpTo50: function(number) {
+  _convertUpTo49: function(number) {
     var times = Math.floor(number / 10);
     var rest = number % 10;
 
-    if (times == 5) {
-      return "L";
-    } else if (times < 4) {
+    if (times < 4) {
       return "X".repeat(times) + this._convertUpTo10(rest);
     } else {
       return "XL" + this._convertUpTo10(rest);
