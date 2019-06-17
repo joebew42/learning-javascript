@@ -13,10 +13,9 @@ const _RomanNumerals = {
   },
 
   _convertUpTo89: function(number) {
-    var times = Math.floor(number / 50);
     var rest = number % 50;
 
-    return "L".repeat(times) + this._convertUpTo49(rest);
+    return "L" + this._convertUpTo49(rest);
   },
 
   _convertUpTo49: function(number) {
