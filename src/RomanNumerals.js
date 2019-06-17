@@ -1,5 +1,8 @@
 const _RomanNumerals = {
   convert: function(number) {
+    if (number == 100) {
+      return "C";
+    }
     return this._convertUpTo99(number);
   },
 
