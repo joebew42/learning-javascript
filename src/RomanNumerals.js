@@ -1,20 +1,30 @@
 const _RomanNumerals = {
   convert: function(number) {
-    return this._convertTens(number);
+    return this._convertUpTo100(number);
   },
 
-  _convertTens: function(number) {
-    var times = Math.floor(number / 10);
-    var rest = number % 10;
-
-    if (times < 4) {
-      return "X".repeat(times) + this._convertUnits(rest)
+  _convertUpTo100: function(number) {
+    if (number == 60) {
+      return "LX";
     } else {
-      return "XL" + this._convertUnits(rest)
+      return this._convertUpTo50(number);
     }
   },
 
-  _convertUnits: function(number) {
+  _convertUpTo50: function(number) {
+    var times = Math.floor(number / 10);
+    var rest = number % 10;
+
+    if (times == 5) {
+      return "L";
+    } else if (times < 4) {
+      return "X".repeat(times) + this._convertUpTo10(rest);
+    } else {
+      return "XL" + this._convertUpTo10(rest);
+    }
+  },
+
+  _convertUpTo10: function(number) {
     if (number == 9) {
       return "IX";
     }
