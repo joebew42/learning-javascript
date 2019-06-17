@@ -7,7 +7,11 @@ const _RomanNumerals = {
     var times = Math.floor(number / 10);
     var rest = number % 10;
 
-    return "X".repeat(times) + this._convertUnits(rest)
+    if (times < 4) {
+      return "X".repeat(times) + this._convertUnits(rest)
+    } else {
+      return "XL" + this._convertUnits(rest)
+    }
   },
 
   _convertUnits: function(number) {
