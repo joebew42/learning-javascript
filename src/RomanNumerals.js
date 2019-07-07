@@ -10,10 +10,10 @@ const _RomanNumerals = {
   },
 
   _convertHundreds: function(number) {
-    if (number >= 100) {
-      return "C";
-    }
-    return "";
+    let hundreds = ["", "C", "CC"];
+    let index = Math.floor(number / 100) % 10;
+
+    return hundreds[index];
   },
 
   _convertTens: function(number) {
