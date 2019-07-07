@@ -57,6 +57,7 @@ describe("RomanNumerals", () => {
       2000: "MM",
       2000: "MM",
       3000: "MMM",
+      3999: "MMMCMXCIX"
     });
 
   romans.forEach(([decimal, roman]) => {
