@@ -1,11 +1,15 @@
 const _RomanNumerals = {
   convert: function(number) {
-    let thousands = this._convertThousands(number);
-    let hundreds = this._convertHundreds(number);
-    let tens = this._convertTens(number);
-    let units = this._convertUnits(number);
+    let thousands = this._convertThousands;
+    let hundreds = this._convertHundreds;
+    let tens = this._convertTens;
+    let units = this._convertUnits;
 
-    let result = thousands + hundreds + tens + units;
+    let result =
+      thousands(number) +
+      hundreds(number) +
+      tens(number) +
+      units(number);
 
     return result;
   },
