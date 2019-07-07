@@ -53,7 +53,7 @@ describe("RomanNumerals", () => {
       800:  "DCCC",
       900:  "CM",
       999:  "CMXCIX",
-      // 1000: "M",
+      1000: "M",
     });
 
   romans.forEach(([decimal, roman]) => {
