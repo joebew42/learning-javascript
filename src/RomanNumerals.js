@@ -7,13 +7,7 @@ const _RomanNumerals = {
       this._convertUnits
     ]
 
-    let result =
-      reducers[0](number) +
-      reducers[1](number) +
-      reducers[2](number) +
-      reducers[3](number);
-
-    return result;
+    return reducers.reduce((accumulator, reducer) => accumulator + reducer(number), "");
   },
 
   _convertThousands: function(number) {
