@@ -52,6 +52,7 @@ describe("RomanNumerals", () => {
       700:  "DCC",
       800:  "DCCC",
       900:  "CM",
+      999:  "CMXCIX",
       // 1000: "M",
     });
 
