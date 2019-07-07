@@ -10,4 +10,5 @@ npm test
 # Katas
 
 - Classic HelloWorld to start with the tools
-- [BowlingGame](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
+- [Bowling Game](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
+- [Roman Numerals](http://kata-log.rocks/roman-numerals-kata)
