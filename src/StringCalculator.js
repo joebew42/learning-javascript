@@ -1,6 +1,6 @@
 const _StringCalculator = {
-  add: function() {
-    return -1;
+  add: function(string) {
+    return 0;
   }
 }
 
