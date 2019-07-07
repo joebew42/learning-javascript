@@ -11,16 +11,10 @@ const _RomanNumerals = {
   },
 
   _convertThousands: function(number) {
-    if (number == 3000) {
-      return "MMM";
-    }
-    if (number == 2000) {
-      return "MM";
-    }
-    if (number == 1000) {
-      return "M";
-    }
-    return "";
+    let thousands = ["", "M", "MM", "MMM"]
+    let index = Math.floor(number / 1000) % 10;
+
+    return thousands[index];
   },
 
   _convertHundreds: function(number) {
