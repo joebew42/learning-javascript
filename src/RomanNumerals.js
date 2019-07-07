@@ -6,17 +6,8 @@ const _RomanNumerals = {
     if (number == 9) {
       return "IX";
     }
-    if (number == 8) {
-      return "VIII";
-    }
-    if (number == 7) {
-      return "VII";
-    }
-    if (number == 6) {
-      return "VI";
-    }
-    if (number == 5) {
-      return "V";
+    if (number > 4 && number < 9) {
+      return "V" + "I".repeat(number % 5);
     }
     if (number == 4) {
       return "IV";
