@@ -24,11 +24,16 @@ const _RomanNumerals = {
     if (number == 10) {
       return "X";
     }
+    return this._convertUpTo9(number);
+  },
+
+  _convertUpTo9: function(number) {
     if (number == 9) {
       return "IX";
     }
     if (number > 4 && number < 9) {
-      return "V" + "I".repeat(number % 5);
+      let rest = number % 5;
+      return "V" + this._convertUnits(rest);
     }
     if (number == 4) {
       return "IV";
