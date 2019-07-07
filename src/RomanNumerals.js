@@ -1,13 +1,13 @@
 const _RomanNumerals = {
   convert: function(number) {
-    let reducers = [
+    let converters = [
       this._convertThousands,
       this._convertHundreds,
       this._convertTens,
       this._convertUnits
     ]
 
-    return reducers.reduce((accumulator, reducer) => accumulator + reducer(number), "");
+    return converters.reduce((accumulator, toRoman) => accumulator + toRoman(number), "");
   },
 
   _convertThousands: function(number) {
