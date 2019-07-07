@@ -1,12 +1,20 @@
 const _RomanNumerals = {
   convert: function(number) {
+    let thousands = this._convertThousands(number);
     let hundreds = this._convertHundreds(number);
     let tens = this._convertTens(number);
     let units = this._convertUnits(number);
 
-    let result = hundreds + tens + units;
+    let result = thousands + hundreds + tens + units;
 
     return result;
+  },
+
+  _convertThousands: function(number) {
+    if (number == 1000) {
+      return "M";
+    }
+    return "";
   },
 
   _convertHundreds: function(number) {
