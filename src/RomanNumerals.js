@@ -10,7 +10,7 @@ const _RomanNumerals = {
   },
 
   _convertHundreds: function(number) {
-    let hundreds = ["", "C", "CC"];
+    let hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
     let index = Math.floor(number / 100) % 10;
 
     return hundreds[index];
