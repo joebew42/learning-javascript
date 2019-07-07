@@ -28,21 +28,10 @@ const _RomanNumerals = {
   },
 
   _convertUpTo9: function(number) {
-    if (number == 9) {
-      return "IX";
-    }
-    if (number > 4 && number < 9) {
-      let rest = number % 5;
-      return "V" + this._convertUnits(rest);
-    }
-    if (number == 4) {
-      return "IV";
-    }
-    return this._convertUnits(number);
-  },
+    let units = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+    let index = (number % 10) - 1;
 
-  _convertUnits: function(number) {
-    return "I".repeat(number);
+    return units[index];
   }
 }
 
