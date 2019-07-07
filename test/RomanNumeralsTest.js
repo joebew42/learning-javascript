@@ -54,6 +54,7 @@ describe("RomanNumerals", () => {
       900:  "CM",
       999:  "CMXCIX",
       1000: "M",
+      2000: "MM",
     });
 
   romans.forEach(([decimal, roman]) => {

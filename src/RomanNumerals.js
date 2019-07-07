@@ -11,6 +11,9 @@ const _RomanNumerals = {
   },
 
   _convertThousands: function(number) {
+    if (number == 2000) {
+      return "MM";
+    }
     if (number == 1000) {
       return "M";
     }
