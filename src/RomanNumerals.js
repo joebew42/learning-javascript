@@ -24,10 +24,10 @@ const _RomanNumerals = {
     if (number == 10) {
       return "X";
     }
-    return this._convertUpTo9(number);
+    return this._convertUnits(number);
   },
 
-  _convertUpTo9: function(number) {
+  _convertUnits: function(number) {
     let units = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
     let index = (number % 10) - 1;
 
