@@ -20,4 +20,10 @@ describe("StringCalculator", () => {
 
     assert.equal(result, 1);
   })
+
+  it("returns 3 when the string is 1,2", () => {
+    let result = calculator.add("1,2");
+
+    assert.equal(result, 3);
+  })
 });
