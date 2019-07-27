@@ -15,4 +15,9 @@ describe("StringCalculator", () => {
     assert.equal(result, 0);
   })
 
+  it("returns 1 when the string is 1", () => {
+    let result = calculator.add("1");
+
+    assert.equal(result, 1);
+  })
 });

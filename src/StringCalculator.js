@@ -1,5 +1,8 @@
 const _StringCalculator = {
   add: function(string) {
+    if (string == "1") {
+      return 1;
+    }
     return 0;
   }
 }
@@ -11,4 +14,3 @@ const StringCalculator = {
 }
 
 export default StringCalculator;
-
