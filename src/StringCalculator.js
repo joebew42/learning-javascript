@@ -1,9 +1,9 @@
 const _StringCalculator = {
-  add: function(string) {
-    if (string == "1,2") {
+  add: function(numbersAsString) {
+    if (numbersAsString == "1,2") {
       return 3;
     }
-    if (string == "1") {
+    if (numbersAsString == "1") {
       return 1;
     }
     return 0;
