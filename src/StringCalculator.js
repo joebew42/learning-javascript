@@ -1,17 +1,13 @@
 const _StringCalculator = {
-  add: function(numbersAsString) {
-    if (numbersAsString == "1,2") {
-      return 3;
-    }
-    if (numbersAsString == "1") {
-      return 1;
-    }
-    return 0;
+  add: function (numbersAsString) {
+    return numbersAsString.split(",")
+      .map(Number)
+      .reduce((sum, current) => sum + current, 0);
   }
 }
 
 const StringCalculator = {
-  new: function() {
+  new: function () {
     return Object.create(_StringCalculator);
   }
 }

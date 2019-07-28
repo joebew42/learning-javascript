@@ -26,4 +26,10 @@ describe("StringCalculator", () => {
 
     assert.equal(result, 3);
   })
+
+  it("returns 6 when the string is 1,2,3", () => {
+    let result = calculator.add("1,2,3");
+
+    assert.equal(result, 6);
+  })
 });
