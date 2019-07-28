@@ -4,7 +4,7 @@
   "description": "My journey in trying to learn something about JS",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha -r esm test/*Test.js"
+    "test": "mocha -r esm"
   },
   "repository": {
     "type": "git",
