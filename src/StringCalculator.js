@@ -2,8 +2,7 @@ const DEFAULT_DELIMITER = /,|\n/
 
 const _StringCalculator = {
   add: function (numbersAsString) {
-    let parsed = this._extractDelimiterAndNumbersFrom(numbersAsString)
-
+    let parsed = this._delimiterAndNumbersFrom(numbersAsString)
     let allNumbers = this._allNumbersSeparatedBy(parsed.delimiter, parsed.numbersAsString)
 
     this._checkForNegatives(allNumbers);
@@ -11,7 +10,7 @@ const _StringCalculator = {
     return allNumbers.reduce((sum, current) => sum + current, 0);
   },
 
-  _extractDelimiterAndNumbersFrom: function (string) {
+  _delimiterAndNumbersFrom: function (string) {
     let match = string.match(/\/\/(.+)\n(.+)/)
     if (match != null) {
       return {
