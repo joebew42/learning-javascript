@@ -4,8 +4,11 @@ const _StringCalculator = {
   add: function (numbersAsString) {
     let parsed = this._extractDelimiterAndNumbersFrom(numbersAsString)
 
-    return this._allNumbersSeparatedBy(parsed.delimiter, parsed.numbersAsString)
-      .reduce((sum, current) => sum + current, 0);
+    let allNumbers = this._allNumbersSeparatedBy(parsed.delimiter, parsed.numbersAsString)
+
+    this._checkForNegatives(allNumbers);
+
+    return allNumbers.reduce((sum, current) => sum + current, 0);
   },
 
   _extractDelimiterAndNumbersFrom: function (string) {
@@ -26,6 +29,13 @@ const _StringCalculator = {
     return string
       .split(delimiter)
       .map(Number)
+  },
+
+  _checkForNegatives: function(numbers) {
+    let allNegativeNumbers = numbers.filter((number) => number < 0)
+    if (allNegativeNumbers.length > 0) {
+      throw new Error(`negatives not allowed: ${allNegativeNumbers.join(",")}`)
+    }
   }
 }
 

@@ -44,4 +44,10 @@ describe("StringCalculator", () => {
 
     assert.equal(result, 6);
   })
+
+  it("throws an exception when negatives are provided", () => {
+    assert.throws(() => {
+      calculator.add("1,-2,-3");
+    }, Error, "negatives not allowed: -2,-3");
+  })
 });
