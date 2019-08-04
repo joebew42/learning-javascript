@@ -38,4 +38,10 @@ describe("StringCalculator", () => {
 
     assert.equal(result, 6);
   })
+
+  it("allows to handle custom delimiter", () => {
+    let result = calculator.add("//;\n1;2;3");
+
+    assert.equal(result, 6);
+  })
 });
