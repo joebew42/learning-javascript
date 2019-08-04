@@ -32,4 +32,10 @@ describe("StringCalculator", () => {
 
     assert.equal(result, 6);
   })
+
+  it("allows to handle the new line as numbers delimiter", () => {
+    let result = calculator.add("1\n2,3");
+
+    assert.equal(result, 6);
+  })
 });
