@@ -12,3 +12,4 @@ npm test
 - Classic HelloWorld to start with the tools
 - [Bowling Game](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
 - [Roman Numerals](http://kata-log.rocks/roman-numerals-kata)
+- [String Calculator](https://osherove.com/tdd-kata-1)
