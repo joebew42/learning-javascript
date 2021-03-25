@@ -18,6 +18,23 @@ npm test
 
 ## What's going on?
 
+Salary slip generator should receive an employee with its Employee Id, Employee Name and Annual Gross Salary
+
+Salary slip should contain the Employee ID, Employee Name, Gross Salary, National Insurance contributions, Tax-free allowance, Taxable income and Tax payable for the month
+
+- SalarySlipGenerator
+- Employee (Id, Name, Gross Salary)
+- SalarySlip (EmployeeId, EmployeeName, GrossSalary, NationalInsurance contributions, Tax-free allowance, Taxable income and Tax payable for the month)
+
+The entry point should be the following interface, which you can not change:
+
+```
+public class SalarySlipGenerator {
+  public SalarySlip generateFor(Employee employee);
+}
+```
+
+
 - Salary Slip Kata https://github.com/sandromancuso/salaryslipkata
 
 ## Nice to learn
