@@ -49,6 +49,10 @@ This is the most basic case.
        Employee Name: John J Doe
        Gross Salary: £416.67
 
+Calculation rules:
+
+Monthly Gross Salary: The monthly gross salary is the employee's annual gross salary divided by 12
+
 
 ## Nice to explore later ...
 
