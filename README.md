@@ -18,7 +18,9 @@ npm test
 
 ## What's going on?
 
-Salary slip generator should receive an employee with its Employee Id, Employee Name and Annual Gross Salary
+I am doing the [Salary Slip Kata](https://github.com/sandromancuso/salaryslipkata).
+
+A Salary Slip Generator should receive an employee with its Employee Id, Employee Name and Annual Gross Salary
 
 Salary slip should contain the Employee ID, Employee Name, Gross Salary, National Insurance contributions, Tax-free allowance, Taxable income and Tax payable for the month
 
@@ -34,14 +36,13 @@ public class SalarySlipGenerator {
 }
 ```
 
+## Nice to explore later ...
 
-- Salary Slip Kata https://github.com/sandromancuso/salaryslipkata
-
-## Nice to learn
-
-- Try the Bank Kata https://github.com/sandromancuso/Bank-kata
-- Explore code coverage tools
-- How to test the frontend code (interaction with the DOM, etc ...)?
+- Bank Kata https://github.com/sandromancuso/Bank-kata
+- Explore code coverage tools for JavaScript
+- How to test the front-end code (interaction with the DOM, etc ...)?
+- Setup Vim for JavaScript
+- Setup Emacs for JavaScript
 
 ## Resources I found about JavaScript
 
@@ -79,7 +80,7 @@ We can create Objects and then link them together **OLOO** (Objects-Linked-to-Ot
 - [An Overview of JavaScript Testing in 2019](https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a)
 - [End to End test with Cypress](https://www.cypress.io/)
 
-### Extensions or Resources about VSCode
+### Extensions or Resources about VisualStudioCode
 
 - [Chai Snippets](https://marketplace.visualstudio.com/items?itemName=nwhatt.chai-snippets)
 - [Recommended Extensions](https://code.visualstudio.com/docs/nodejs/extensions#_recommended-extensions)
