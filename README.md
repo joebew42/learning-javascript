@@ -18,7 +18,7 @@ npm test
 
 ## What's going on?
 
-I am doing the [Salary Slip Kata](https://github.com/sandromancuso/salaryslipkata).
+I am practicing the [Salary Slip Kata](https://github.com/sandromancuso/salaryslipkata).
 
 A Salary Slip Generator should receive an employee with its Employee Id, Employee Name and Annual Gross Salary
 
