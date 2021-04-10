@@ -1,13 +1,7 @@
 var assert = require('chai').assert
 
-import SalarySlipGenerator from '../src/SalarySlipGenerator'
-
 describe("SalarySlipGenerator", () => {
-  // var generator;
-
-  beforeEach(() => {
-    // generator = new SalarySlipGenerator();
-  });
+  beforeEach(() => { });
 
   it("test", () => {
     let actual = true
