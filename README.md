@@ -16,45 +16,7 @@ npm install
 npm test
 ```
 
-## What's going on?
-
-I am practicing the [Salary Slip Kata](https://github.com/sandromancuso/salaryslipkata).
-
-A Salary Slip Generator should receive an employee with its Employee Id, Employee Name and Annual Gross Salary
-
-Salary slip should contain the Employee ID, Employee Name, Gross Salary, National Insurance contributions, Tax-free allowance, Taxable income and Tax payable for the month
-
-- SalarySlipGenerator
-- Employee (Id, Name, Gross Salary)
-- SalarySlip (EmployeeId, EmployeeName, GrossSalary, NationalInsurance contributions, Tax-free allowance, Taxable income and Tax payable for the month)
-
-The entry point should be the following interface, which you can not change:
-
-```
-public class SalarySlipGenerator {
-  public SalarySlip generateFor(Employee employee);
-}
-```
-
-Iteration 1: for an annual salary of £5,000.00
-This is the most basic case.
-
-*Given* I have an employee John J Doe with an annual gross salary of £5,000.00
-
-*When* I generate a monthly salary slip for the employee
-
-*Then* the monthly salary slip should contain the below:
-
-       Employee ID: 12345
-       Employee Name: John J Doe
-       Gross Salary: £416.67
-
-Calculation rules:
-
-Monthly Gross Salary: The monthly gross salary is the employee's annual gross salary divided by 12
-
-
-## Nice to explore later ...
+## Nice to explore later
 
 - Bank Kata https://github.com/sandromancuso/Bank-kata
 - Explore code coverage tools for JavaScript
