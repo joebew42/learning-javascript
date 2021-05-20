@@ -1,12 +1,12 @@
-var assert = require('chai').assert
+var assert = require("chai").assert;
 
 describe("SalarySlipGenerator", () => {
-  beforeEach(() => { });
+  beforeEach(() => {});
 
   it("test", () => {
-    let actual = true
-    let expected = true
+    let actual = true;
+    let expected = true;
 
-    assert.equal(actual, expected)
+    assert.equal(actual, expected);
   });
 });
