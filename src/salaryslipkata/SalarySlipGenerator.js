@@ -1,8 +1,10 @@
+const MONTHS_IN_A_YEAR = 12;
+
 class SalarySlipGenerator {
   constructor() {}
 
   generateFor(annualGrossSalary) {
-    return this.#roundUp(annualGrossSalary / 12, 2);
+    return this.#roundUp(annualGrossSalary / MONTHS_IN_A_YEAR, 2);
   }
 
   #roundUp(number, decimalDigits) {
