@@ -1,5 +1,12 @@
 # Salary slip kata
 
+## TODO FOR THE NEXT SESSION!
+
+- Extract a `Salary` object
+  - Add a Monthly Gross Salary field for the iteration 1
+  - Add a National Insurance contribution field for the iteration 2
+- [?] How to compare two objects? Do we need to implements a `#equals` method?
+
 ## Problem description: Salary slip generator for UK companies.
 
 A typical salary slip contains employee details like employee id, employee name and their monthly salary details like their gross salary, national insurance contributions, tax-free allowance, taxable income and tax payable.
@@ -180,4 +187,3 @@ Calculation rules:
 The [DETAILS.md](DETAILS.md) file contains a condensed version of the calculation rules with more examples and links to additional resources.
 
 You do not need to read it to complete the Kata, but it is provided to you as an extra help.
-
