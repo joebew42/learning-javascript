@@ -5,11 +5,14 @@ describe("SalarySlipGenerator", () => {
   beforeEach(() => {});
 
   it("calculates the monthly gross salary from the annual one", () => {
-    let salarySlip = new SalarySlipGenerator();
+    let salarySlipGenerator = new SalarySlipGenerator();
 
     let annualGrossSalary = 5000;
     let monthlyGrossSalary = 416.67;
 
-    assert.equal(salarySlip.generateFor(annualGrossSalary), monthlyGrossSalary);
+    assert.equal(
+      salarySlipGenerator.generateFor(annualGrossSalary),
+      monthlyGrossSalary
+    );
   });
 });
