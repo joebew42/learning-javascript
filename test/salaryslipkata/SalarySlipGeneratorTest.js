@@ -2,9 +2,9 @@ import { assert } from "chai";
 import SalarySlipGenerator from "../../src/salaryslipkata/SalarySlipGenerator";
 
 describe("SalarySlipGenerator", () => {
-  beforeEach(() => {});
+  beforeEach(function () {});
 
-  it("calculates the monthly gross salary from the annual one", () => {
+  it("calculates the monthly gross salary from the annual one", function () {
     let salarySlipGenerator = new SalarySlipGenerator();
 
     let annualGrossSalary = 5000;
