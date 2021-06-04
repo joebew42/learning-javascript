@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import SalarySlipGenerator from "../../src/salaryslipkata/SalarySlipGenerator";
+import SalarySlip from "../../src/salaryslipkata/SalarySlip";
 
 describe("SalarySlipGenerator", function () {
   beforeEach(function () {});
@@ -10,9 +11,9 @@ describe("SalarySlipGenerator", function () {
     let annualGrossSalary = 5000;
     let monthlyGrossSalary = 416.67;
 
-    assert.equal(
+    assert.deepEqual(
       salarySlipGenerator.generateFor(annualGrossSalary),
-      monthlyGrossSalary
+      new SalarySlip(monthlyGrossSalary)
     );
   });
 });

@@ -2,9 +2,7 @@
 
 ## TODO FOR THE NEXT SESSION!
 
-- Extract a `Salary` object
-  - Add a Monthly Gross Salary field for the iteration 1
-  - Add a National Insurance contribution field for the iteration 2
+- Add a National Insurance contribution field for the iteration 2
 - [?] How to compare two objects? Do we need to implements a `#equals` method?
 
 ## Problem description: Salary slip generator for UK companies.
