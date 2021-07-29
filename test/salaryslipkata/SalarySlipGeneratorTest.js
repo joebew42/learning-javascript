@@ -38,4 +38,8 @@ describe("SalarySlipGenerator", function () {
       );
     });
   });
+
+  describe("for annual gross salaries above than 8,060.00", function () {
+    xit("calculates the national insurance contribution", function () {});
+  });
 });
