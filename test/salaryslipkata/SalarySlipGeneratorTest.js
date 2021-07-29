@@ -12,15 +12,18 @@ describe("SalarySlipGenerator", function () {
     assert.notDeepEqual(firstSalarySlip, secondSalarySlip);
   });
 
-  it("calculates the monthly gross salary from the annual one", function () {
-    let salarySlipGenerator = new SalarySlipGenerator();
-
+  describe("for annual gross salaries less or equal than 8,060.00", function () {
     let annualGrossSalary = 5000;
-    let monthlyGrossSalary = 416.67;
 
-    assert.deepEqual(
-      salarySlipGenerator.generateFor(annualGrossSalary),
-      new SalarySlip(monthlyGrossSalary)
-    );
+    it("calculates the monthly gross salary", function () {
+      let salarySlipGenerator = new SalarySlipGenerator();
+
+      let monthlyGrossSalary = 416.67;
+
+      assert.deepEqual(
+        salarySlipGenerator.generateFor(annualGrossSalary),
+        new SalarySlip(monthlyGrossSalary)
+      );
+    });
   });
 });
