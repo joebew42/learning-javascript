@@ -25,5 +25,17 @@ describe("SalarySlipGenerator", function () {
         new SalarySlip(monthlyGrossSalary)
       );
     });
+
+    it("do not calculate the national insurance contribution", function () {
+      let salarySlipGenerator = new SalarySlipGenerator();
+
+      let monthlyGrossSalary = 671.67;
+      let nationalInsuranceContribution = 0;
+
+      assert.deepEqual(
+        salarySlipGenerator.generateFor(annualGrossSalary),
+        new SalarySlip(monthlyGrossSalary, nationalInsuranceContribution)
+      );
+    });
   });
 });
