@@ -5,6 +5,13 @@ import SalarySlip from "../../src/salaryslipkata/SalarySlip";
 describe("SalarySlipGenerator", function () {
   beforeEach(function () {});
 
+  it("two salary slips with a different national insurance contribution are not equal", function () {
+    let firstSalarySlip = new SalarySlip(100, 50);
+    let secondSalarySlip = new SalarySlip(100, 100);
+
+    assert.notDeepEqual(firstSalarySlip, secondSalarySlip);
+  });
+
   it("calculates the monthly gross salary from the annual one", function () {
     let salarySlipGenerator = new SalarySlipGenerator();
 
