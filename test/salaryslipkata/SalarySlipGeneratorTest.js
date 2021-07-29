@@ -13,12 +13,12 @@ describe("SalarySlipGenerator", function () {
   });
 
   describe("for annual gross salaries less or equal than 8,060.00", function () {
-    let annualGrossSalary = 5000;
+    let annualGrossSalary = 8060;
 
     it("calculates the monthly gross salary", function () {
       let salarySlipGenerator = new SalarySlipGenerator();
 
-      let monthlyGrossSalary = 416.67;
+      let monthlyGrossSalary = 671.67;
 
       assert.deepEqual(
         salarySlipGenerator.generateFor(annualGrossSalary),
