@@ -39,7 +39,18 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
-  describe("for annual gross salaries above than 8,060.00", function () {
-    xit("calculates the national insurance contribution", function () {});
+  describe("for amounts earned above an annual gross salary of 8,060.00", function () {
+    it("calculates the 12% as national insurance contribution", function () {
+      let salarySlipGenerator = new SalarySlipGenerator();
+
+      let annualGrossSalary = 9060;
+      let monthlyGrossSalary = 755;
+      let nationalInsuranceContribution = 10;
+
+      assert.deepEqual(
+        salarySlipGenerator.generateFor(annualGrossSalary),
+        new SalarySlip(monthlyGrossSalary, nationalInsuranceContribution)
+      );
+    });
   });
 });
