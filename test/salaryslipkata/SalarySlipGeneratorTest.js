@@ -32,7 +32,7 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
-  describe("for amounts earned above a annual gross salary of 8,060.00", function () {
+  describe("for amounts earned above an annual gross salary of 8,060.00", function () {
     it("calculates the 12% as national insurance contribution", function () {
       let salarySlipGenerator = new SalarySlipGenerator();
 
@@ -47,7 +47,7 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
-  describe("for amounts earned above a annual gross salary of 11,000.00", function () {
+  describe("for amounts earned above an annual gross salary of 11,000.00", function () {
     xit("calculates the taxes at 20%", function () {});
   });
 });
