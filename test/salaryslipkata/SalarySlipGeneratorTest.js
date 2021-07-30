@@ -5,13 +5,6 @@ import SalarySlip from "../../src/salaryslipkata/SalarySlip";
 describe("SalarySlipGenerator", function () {
   beforeEach(function () {});
 
-  it("two salary slips with a different national insurance contribution are not equal", function () {
-    let firstSalarySlip = new SalarySlip(100, 50);
-    let secondSalarySlip = new SalarySlip(100, 100);
-
-    assert.notDeepEqual(firstSalarySlip, secondSalarySlip);
-  });
-
   describe("for annual gross salaries less or equal than 8,060.00", function () {
     let annualGrossSalary = 8060;
 
