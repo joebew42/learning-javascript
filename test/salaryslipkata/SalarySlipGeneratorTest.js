@@ -47,6 +47,15 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
+  describe("A SalarySlip", function () {
+    it("contains a taxableIncome", function () {
+      let firstSalarySlip = new SalarySlip(0, 0, 100);
+      let secondSalarySlip = new SalarySlip(0, 0, 200);
+
+      assert.notDeepEqual(firstSalarySlip, secondSalarySlip);
+    });
+  });
+
   describe("for any amount earned above an annual gross salary of 11,000.00", function () {
     xit("calculates the taxes at 20%", function () {});
   });
