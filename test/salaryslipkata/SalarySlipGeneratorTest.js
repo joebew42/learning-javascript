@@ -54,7 +54,7 @@ describe("SalarySlipGenerator", function () {
   describe("any amount earned above an annual gross salary of 11,000.00", function () {
     let annualGrossSalary = 12000;
 
-    xit("is considered as taxable income", function () {
+    it("is considered as taxable income", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
       assert.equal(salarySlip._taxableIncome, 83.33);

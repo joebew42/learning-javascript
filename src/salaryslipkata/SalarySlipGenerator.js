@@ -5,6 +5,8 @@ const MONTHS_IN_A_YEAR = 12;
 const NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 8060;
 const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
+const TAXABLE_INCOME_THRESHOLD = 11000;
+
 class SalarySlipGenerator {
   constructor() {}
 
@@ -38,7 +40,17 @@ class SalarySlipGenerator {
   }
 
   #taxableIncomeFrom(annualGrossSalary) {
-    if (annualGrossSalary <= 11000) return 0;
+    if (annualGrossSalary <= TAXABLE_INCOME_THRESHOLD) return 0;
+
+    let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
+      TAXABLE_INCOME_THRESHOLD,
+      annualGrossSalary
+    );
+
+    return this.#roundUp(
+      amountEarnedAboveTaxableIncomeThreshold / MONTHS_IN_A_YEAR,
+      2
+    );
   }
 
   #amountEarnedAbove(threshold, amount) {
