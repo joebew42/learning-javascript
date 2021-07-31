@@ -11,52 +11,49 @@ describe("SalarySlipGenerator", function () {
     it("calculates the monthly gross salary", function () {
       let salarySlipGenerator = new SalarySlipGenerator();
 
-      let monthlyGrossSalary = 671.67;
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
-      assert.deepEqual(
-        salarySlipGenerator.generateFor(annualGrossSalary),
-        new SalarySlip(monthlyGrossSalary)
-      );
+      assert.equal(salarySlip._monthtlyGrossSalary, 671.67);
     });
 
     it("do not calculate the national insurance contribution", function () {
       let salarySlipGenerator = new SalarySlipGenerator();
 
-      let monthlyGrossSalary = 671.67;
-      let nationalInsuranceContribution = 0;
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
-      assert.deepEqual(
-        salarySlipGenerator.generateFor(annualGrossSalary),
-        new SalarySlip(monthlyGrossSalary, nationalInsuranceContribution)
-      );
+      assert.equal(salarySlip._nationalInsuranceContribution, 0);
     });
   });
 
   describe("for any amount earned above an annual gross salary of 8,060.00", function () {
+    let annualGrossSalary = 9060;
+
     it("calculates the 12% as national insurance contribution", function () {
       let salarySlipGenerator = new SalarySlipGenerator();
 
-      let annualGrossSalary = 9060;
-      let monthlyGrossSalary = 755;
-      let nationalInsuranceContribution = 10;
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
-      assert.deepEqual(
-        salarySlipGenerator.generateFor(annualGrossSalary),
-        new SalarySlip(monthlyGrossSalary, nationalInsuranceContribution)
-      );
+      assert.equal(salarySlip._nationalInsuranceContribution, 10);
     });
   });
 
   describe("A SalarySlip", function () {
     it("contains a taxableIncome", function () {
-      let firstSalarySlip = new SalarySlip(0, 0, 100);
-      let secondSalarySlip = new SalarySlip(0, 0, 200);
+      let aSalarySlip = new SalarySlip(0, 0, 100);
 
-      assert.notDeepEqual(firstSalarySlip, secondSalarySlip);
+      assert(aSalarySlip._taxableIncome, 100);
     });
   });
 
-  describe("for any amount earned above an annual gross salary of 11,000.00", function () {
-    xit("calculates the taxes at 20%", function () {});
+  describe("any amount earned above an annual gross salary of 11,000.00", function () {
+    let annualGrossSalary = 12000;
+
+    xit("is considered as taxable income", function () {
+      let salarySlipGenerator = new SalarySlipGenerator();
+
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      assert.equal(salarySlip._taxableIncome, 83.33);
+    });
   });
 });
