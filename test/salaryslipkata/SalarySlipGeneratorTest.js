@@ -33,14 +33,6 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
-  describe("A SalarySlip", function () {
-    it("contains a taxableIncome", function () {
-      let aSalarySlip = new SalarySlip(0, 0, 100);
-
-      assert(aSalarySlip._taxableIncome, 100);
-    });
-  });
-
   describe("any amount earned below an annual gross salary of 11,000.00 or so", function () {
     let annualGrossSalary = 11000;
 
