@@ -2,11 +2,9 @@ Salary Slip Kata
 
 # DOING
 
-- Calculate the taxable income
-
 # TODO
 
-- Extract the salarySlipGenerator in the tests
+- Should we start thinking to introduce a `TaxesInformation`?
 - Add support for `taxFreeAllowance` to the `SalarySlip`
 - Add support for `taxPayable` to the `SalarySlip`
 
