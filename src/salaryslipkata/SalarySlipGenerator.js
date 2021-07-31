@@ -12,7 +12,7 @@ class SalarySlipGenerator {
     return new SalarySlip(
       this.#monthlyGrossSalaryFrom(annualGrossSalary),
       this.#nationalInsuranceContributionFrom(annualGrossSalary),
-      0
+      this.#taxableIncomeFrom(annualGrossSalary)
     );
   }
 
@@ -35,6 +35,10 @@ class SalarySlipGenerator {
     );
 
     return nationalInsuranceContribution;
+  }
+
+  #taxableIncomeFrom(annualGrossSalary) {
+    if (annualGrossSalary <= 11000) return 0;
   }
 
   #amountEarnedAbove(threshold, amount) {
