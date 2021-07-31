@@ -41,6 +41,16 @@ describe("SalarySlipGenerator", function () {
     });
   });
 
+  describe("any amount earned below an annual gross salary of 11,000.00 or so", function () {
+    let annualGrossSalary = 11000;
+
+    it("is not considered as taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      assert.equal(salarySlip._taxableIncome, 0);
+    });
+  });
+
   describe("any amount earned above an annual gross salary of 11,000.00", function () {
     let annualGrossSalary = 12000;
 
