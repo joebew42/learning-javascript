@@ -1,6 +1,5 @@
 import { assert } from "chai";
 import SalarySlipGenerator from "../../src/salaryslipkata/SalarySlipGenerator";
-import SalarySlip from "../../src/salaryslipkata/SalarySlip";
 
 describe("SalarySlipGenerator", function () {
   let salarySlipGenerator = new SalarySlipGenerator();
