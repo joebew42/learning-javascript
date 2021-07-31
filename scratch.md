@@ -6,6 +6,7 @@ Salary Slip Kata
 
 # TODO
 
+- Extract the salarySlipGenerator in the tests
 - Add support for `taxFreeAllowance` to the `SalarySlip`
 - Add support for `taxPayable` to the `SalarySlip`
 
