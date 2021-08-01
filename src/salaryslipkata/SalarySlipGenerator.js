@@ -7,6 +7,7 @@ const NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 8060;
 const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
 const TAXABLE_INCOME_THRESHOLD = 11000;
+const TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 
 class SalarySlipGenerator {
   constructor() {}
@@ -48,7 +49,7 @@ class SalarySlipGenerator {
   }
 
   #taxPayableFrom(taxableIncome) {
-    return this.#roundUp(taxableIncome * 0.2, 2);
+    return this.#roundUp(taxableIncome * TAXABLE_INCOME_TAX_PERCENTAGE, 2);
   }
 
   #taxableIncomeFrom(annualGrossSalary) {
