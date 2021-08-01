@@ -1,3 +1,5 @@
+import TaxInformation from "./TaxInformation.js";
+
 const NO_NATIONAL_INSURANCE_CONTRIBUTION = 0;
 
 class SalarySlip {
@@ -15,6 +17,10 @@ class SalarySlip {
       nationalInsuranceContribution || NO_NATIONAL_INSURANCE_CONTRIBUTION;
 
     this._taxableIncome = taxableIncome;
+  }
+
+  taxInformation() {
+    return new TaxInformation(this._taxableIncome);
   }
 }
 
