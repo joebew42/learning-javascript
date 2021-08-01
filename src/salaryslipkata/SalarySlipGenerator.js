@@ -1,4 +1,5 @@
 import SalarySlip from "./SalarySlip";
+import TaxInformation from "./TaxInformation";
 
 const MONTHS_IN_A_YEAR = 12;
 
@@ -14,7 +15,8 @@ class SalarySlipGenerator {
     return new SalarySlip(
       this.#monthlyGrossSalaryFrom(annualGrossSalary),
       this.#nationalInsuranceContributionFrom(annualGrossSalary),
-      this.#taxableIncomeFrom(annualGrossSalary)
+      this.#taxableIncomeFrom(annualGrossSalary),
+      this.#taxInformationFrom(annualGrossSalary)
     );
   }
 
@@ -37,6 +39,11 @@ class SalarySlipGenerator {
     );
 
     return nationalInsuranceContribution;
+  }
+
+  #taxInformationFrom(annualGrossSalary) {
+    let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
+    return new TaxInformation(taxableIncome);
   }
 
   #taxableIncomeFrom(annualGrossSalary) {

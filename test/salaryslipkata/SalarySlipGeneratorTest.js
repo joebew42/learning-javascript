@@ -50,6 +50,14 @@ describe("SalarySlipGenerator", function () {
     it("is considered as taxable income", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
+      let taxInformation = salarySlip.taxInformation();
+
+      assert.equal(taxInformation.taxableIncome(), 83.33);
+    });
+
+    it("is considered as taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
       assert.equal(salarySlip._taxableIncome, 83.33);
     });
   });
