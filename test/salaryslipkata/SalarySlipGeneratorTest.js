@@ -50,6 +50,10 @@ describe("SalarySlipGenerator", function () {
 
       assert.equal(taxInformation.taxableIncome(), 0);
       assert.equal(taxInformation.taxPayable(), 0);
+      assert.equal(
+        taxInformation.taxFreeAllowance(),
+        salarySlip._monthtlyGrossSalary
+      );
     });
   });
 
@@ -70,6 +74,16 @@ describe("SalarySlipGenerator", function () {
       let taxInformation = salarySlip.taxInformation();
 
       assert.equal(taxInformation.taxPayable(), 16.67);
+    });
+
+    it("has a tax-free allowance net of the taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+      let expectedTaxFreeAllowance =
+        salarySlip._monthtlyGrossSalary - taxInformation.taxableIncome();
+
+      assert.equal(taxInformation.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
   });
 });
