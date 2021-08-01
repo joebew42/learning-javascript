@@ -23,7 +23,7 @@ class SalarySlip {
   }
 
   taxInformation() {
-    return new TaxInformation(this._taxableIncome);
+    return this.#taxInformation;
   }
 }
 
