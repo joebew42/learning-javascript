@@ -42,6 +42,15 @@ describe("SalarySlipGenerator", function () {
 
       assert.equal(taxInformation.taxableIncome(), 0);
     });
+
+    it("is not subject to be taxed", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+
+      assert.equal(taxInformation.taxableIncome(), 0);
+      assert.equal(taxInformation.taxPayable(), 0);
+    });
   });
 
   describe("any amount earned above an annual gross salary of 11,000.00", function () {

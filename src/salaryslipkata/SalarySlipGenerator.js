@@ -42,7 +42,9 @@ class SalarySlipGenerator {
 
   #taxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
-    return new TaxInformation(taxableIncome);
+    let taxPayable = 0;
+
+    return new TaxInformation(taxableIncome, taxPayable);
   }
 
   #taxableIncomeFrom(annualGrossSalary) {
