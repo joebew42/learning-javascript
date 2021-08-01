@@ -13,10 +13,16 @@ class SalarySlipGenerator {
   constructor() {}
 
   generateFor(annualGrossSalary) {
+    let monthlyGrossSalary = this.#monthlyGrossSalaryFrom(annualGrossSalary);
+    let nationalInsuranceContribution = this.#nationalInsuranceContributionFrom(
+      annualGrossSalary
+    );
+    let taxInformation = this.#taxInformationFrom(annualGrossSalary);
+
     return new SalarySlip(
-      this.#monthlyGrossSalaryFrom(annualGrossSalary),
-      this.#nationalInsuranceContributionFrom(annualGrossSalary),
-      this.#taxInformationFrom(annualGrossSalary)
+      monthlyGrossSalary,
+      nationalInsuranceContribution,
+      taxInformation
     );
   }
 
