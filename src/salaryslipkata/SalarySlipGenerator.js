@@ -42,7 +42,7 @@ class SalarySlipGenerator {
 
   #taxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
-    let taxPayable = 0;
+    let taxPayable = this.#roundUp(taxableIncome * 0.2, 2);
 
     return new TaxInformation(taxableIncome, taxPayable);
   }

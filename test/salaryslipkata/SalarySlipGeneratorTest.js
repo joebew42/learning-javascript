@@ -56,12 +56,20 @@ describe("SalarySlipGenerator", function () {
   describe("any amount earned above an annual gross salary of 11,000.00", function () {
     let annualGrossSalary = 12000;
 
-    it("is considered as taxable income", function () {
+    it("is considered a taxable income", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
       let taxInformation = salarySlip.taxInformation();
 
       assert.equal(taxInformation.taxableIncome(), 83.33);
+    });
+
+    it("has a tax of the 20% on its taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+
+      assert.equal(taxInformation.taxPayable(), 16.67);
     });
   });
 });
