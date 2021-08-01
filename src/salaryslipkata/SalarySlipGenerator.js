@@ -15,7 +15,6 @@ class SalarySlipGenerator {
     return new SalarySlip(
       this.#monthlyGrossSalaryFrom(annualGrossSalary),
       this.#nationalInsuranceContributionFrom(annualGrossSalary),
-      this.#taxableIncomeFrom(annualGrossSalary),
       this.#taxInformationFrom(annualGrossSalary)
     );
   }

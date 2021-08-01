@@ -2,8 +2,6 @@ Salary Slip Kata
 
 # DOING
 
-- Should we start thinking to introduce a `TaxesInformation`?
-
 # TODO
 
 - Add support for `taxFreeAllowance` to the `SalarySlip`
