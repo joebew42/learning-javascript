@@ -86,4 +86,14 @@ describe("SalarySlipGenerator", function () {
       assert.equal(taxInformation.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
   });
+
+  describe("for any amount earned above an annual gross salary of 43,000.00", function () {
+    let annualGrossSalary = 45000;
+
+    it("calculates the 2% more on the national insurance contribution", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      assert.equal(salarySlip._nationalInsuranceContribution, 352.73);
+    });
+  });
 });
