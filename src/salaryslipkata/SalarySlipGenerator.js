@@ -6,6 +6,9 @@ const MONTHS_IN_A_YEAR = 12;
 const NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 8060;
 const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
+const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 43000;
+const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
+
 const TAXABLE_INCOME_THRESHOLD = 11000;
 const TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 
@@ -36,7 +39,8 @@ class SalarySlipGenerator {
     if (annualGrossSalary <= NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
       return 0;
 
-    if (annualGrossSalary > 43000) annualGrossSalary = 43000;
+    if (annualGrossSalary > HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
+      annualGrossSalary = HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD;
 
     let nationalInsuranceContribution = this.#roundUp(
       (this.#amountEarnedAbove(
@@ -52,10 +56,15 @@ class SalarySlipGenerator {
   }
 
   #higherNationalInsuranceContributionFrom(annualGrossSalary) {
-    if (annualGrossSalary <= 43000) return 0;
+    if (annualGrossSalary <= HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
+      return 0;
 
     let nationalInsuranceContribution = this.#roundUp(
-      (this.#amountEarnedAbove(43000, annualGrossSalary) * 0.02) /
+      (this.#amountEarnedAbove(
+        HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD,
+        annualGrossSalary
+      ) *
+        HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE) /
         MONTHS_IN_A_YEAR,
       2
     );
