@@ -17,10 +17,8 @@ class SalarySlipGenerator {
 
   generateFor(annualGrossSalary) {
     let monthlyGrossSalary = this.#monthlyGrossSalaryFrom(annualGrossSalary);
-    let nationalInsuranceContribution = this.#roundUp(
-      this.#nationalInsuranceContributionFrom(annualGrossSalary) +
-        this.#higherNationalInsuranceContributionFrom(annualGrossSalary),
-      2
+    let nationalInsuranceContribution = this.#nationalInsuranceContributionFrom(
+      annualGrossSalary
     );
     let taxInformation = this.#taxInformationFrom(annualGrossSalary);
 
@@ -36,6 +34,22 @@ class SalarySlipGenerator {
   }
 
   #nationalInsuranceContributionFrom(annualGrossSalary) {
+    let standardNationalInsuranceContribution = this.#standardNationalInsuranceContributionFrom(
+      annualGrossSalary
+    );
+
+    let higherNationalInsuranceContribution = this.#higherNationalInsuranceContributionFrom(
+      annualGrossSalary
+    );
+
+    return this.#roundUp(
+      standardNationalInsuranceContribution +
+        higherNationalInsuranceContribution,
+      2
+    );
+  }
+
+  #standardNationalInsuranceContributionFrom(annualGrossSalary) {
     if (annualGrossSalary <= NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
       return 0;
 
