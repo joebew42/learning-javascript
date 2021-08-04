@@ -35,11 +35,16 @@ class SalarySlipGenerator {
 
   #nationalInsuranceContributionFrom(annualGrossSalary) {
     let standardNationalInsuranceContribution = this.#standardNationalInsuranceContributionFrom(
-      annualGrossSalary
+      annualGrossSalary,
+      NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD,
+      NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE,
+      HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD
     );
 
     let higherNationalInsuranceContribution = this.#higherNationalInsuranceContributionFrom(
-      annualGrossSalary
+      annualGrossSalary,
+      HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD,
+      HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE
     );
 
     return this.#roundUp(
@@ -49,19 +54,20 @@ class SalarySlipGenerator {
     );
   }
 
-  #standardNationalInsuranceContributionFrom(annualGrossSalary) {
-    if (annualGrossSalary <= NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
-      return 0;
+  #standardNationalInsuranceContributionFrom(
+    annualGrossSalary,
+    amount_threshold,
+    contribution_percentage,
+    upper_limit
+  ) {
+    if (annualGrossSalary <= amount_threshold) return 0;
 
-    if (annualGrossSalary > HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
-      annualGrossSalary = HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD;
+    if (upper_limit && annualGrossSalary > upper_limit)
+      annualGrossSalary = upper_limit;
 
     let nationalInsuranceContribution = this.#roundUp(
-      (this.#amountEarnedAbove(
-        NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD,
-        annualGrossSalary
-      ) *
-        NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE) /
+      (this.#amountEarnedAbove(amount_threshold, annualGrossSalary) *
+        contribution_percentage) /
         MONTHS_IN_A_YEAR,
       2
     );
@@ -69,16 +75,20 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #higherNationalInsuranceContributionFrom(annualGrossSalary) {
-    if (annualGrossSalary <= HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD)
-      return 0;
+  #higherNationalInsuranceContributionFrom(
+    annualGrossSalary,
+    amount_threshold,
+    contribution_percentage,
+    upper_limit
+  ) {
+    if (annualGrossSalary <= amount_threshold) return 0;
+
+    if (upper_limit && annualGrossSalary > upper_limit)
+      annualGrossSalary = upper_limit;
 
     let nationalInsuranceContribution = this.#roundUp(
-      (this.#amountEarnedAbove(
-        HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD,
-        annualGrossSalary
-      ) *
-        HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE) /
+      (this.#amountEarnedAbove(amount_threshold, annualGrossSalary) *
+        contribution_percentage) /
         MONTHS_IN_A_YEAR,
       2
     );
