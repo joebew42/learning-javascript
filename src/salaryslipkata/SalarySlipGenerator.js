@@ -56,18 +56,18 @@ class SalarySlipGenerator {
 
   #calculateNationalInsuranceContributionFor(
     annualGrossSalary,
-    amount_threshold,
-    contribution_percentage,
-    upper_limit
+    minimumAmountRequired,
+    contributionPercentage,
+    maximumAmount
   ) {
-    if (annualGrossSalary <= amount_threshold) return 0;
+    if (annualGrossSalary <= minimumAmountRequired) return 0;
 
-    if (upper_limit && annualGrossSalary > upper_limit)
-      annualGrossSalary = upper_limit;
+    if (maximumAmount && annualGrossSalary > maximumAmount)
+      annualGrossSalary = maximumAmount;
 
     let nationalInsuranceContribution = this.#roundUp(
-      (this.#amountEarnedAbove(amount_threshold, annualGrossSalary) *
-        contribution_percentage) /
+      (this.#amountEarnedAbove(minimumAmountRequired, annualGrossSalary) *
+        contributionPercentage) /
         MONTHS_IN_A_YEAR,
       2
     );
