@@ -108,7 +108,7 @@ describe("SalarySlipGenerator", function () {
       assert.equal(taxInformation.taxableIncome(), 2833.34);
     });
 
-    xit("has a tax of the 40% on its taxable income", function () {
+    it("has a tax of the 40% on its taxable income", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
       let taxInformation = salarySlip.taxInformation();
