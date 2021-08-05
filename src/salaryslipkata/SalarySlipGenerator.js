@@ -78,7 +78,9 @@ class SalarySlipGenerator {
   }
 
   #taxInformationFrom(annualGrossSalary) {
-    let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
+    let taxableIncome =
+      this.#taxableIncomeFrom(annualGrossSalary) +
+      this.#higherTaxableIncomeFrom(annualGrossSalary);
     let taxPayable = this.#taxPayableFrom(taxableIncome);
     let taxFreeAllowance =
       this.#monthlyGrossSalaryFrom(annualGrossSalary) - taxableIncome;
@@ -99,6 +101,20 @@ class SalarySlipGenerator {
 
     let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
       TAXABLE_INCOME_THRESHOLD,
+      annualGrossSalary
+    );
+
+    return this.#roundUp(
+      amountEarnedAboveTaxableIncomeThreshold / MONTHS_IN_A_YEAR,
+      2
+    );
+  }
+
+  #higherTaxableIncomeFrom(annualGrossSalary) {
+    if (annualGrossSalary <= HIGHER_TAXABLE_INCOME_THRESHOLD) return 0;
+
+    let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
+      HIGHER_TAXABLE_INCOME_THRESHOLD,
       annualGrossSalary
     );
 
