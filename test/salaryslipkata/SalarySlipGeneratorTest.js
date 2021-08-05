@@ -96,4 +96,34 @@ describe("SalarySlipGenerator", function () {
       assert.equal(salarySlip._nationalInsuranceContribution, 352.73);
     });
   });
+
+  describe("any amount earned above an annual gross salary of 43,000.00", function () {
+    let annualGrossSalary = 45000;
+
+    xit("is considered a taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+
+      assert.equal(taxInformation.taxableIncome(), 2833.33);
+    });
+
+    xit("has a tax of the 40% on its taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+
+      assert.equal(taxInformation.taxPayable(), 600.0);
+    });
+
+    xit("has a tax-free allowance net of the taxable income", function () {
+      let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
+
+      let taxInformation = salarySlip.taxInformation();
+      let expectedTaxFreeAllowance =
+        salarySlip._monthtlyGrossSalary - taxInformation.taxableIncome();
+
+      assert.equal(taxInformation.taxFreeAllowance(), expectedTaxFreeAllowance);
+    });
+  });
 });
