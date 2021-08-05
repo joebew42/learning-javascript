@@ -20,6 +20,10 @@ class SalarySlip {
   taxInformation() {
     return this.#taxInformation;
   }
+
+  taxFreeAllowance() {
+    return this._monthtlyGrossSalary - this.#taxInformation.taxableIncome();
+  }
 }
 
 export default SalarySlip;

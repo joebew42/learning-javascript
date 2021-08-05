@@ -1,12 +1,10 @@
 class TaxInformation {
   #taxableIncome;
   #taxPayable;
-  #taxFreeAllowance;
 
-  constructor(taxableIncome, taxPayable, taxFreeAllowance) {
+  constructor(taxableIncome, taxPayable) {
     this.#taxableIncome = taxableIncome;
     this.#taxPayable = taxPayable;
-    this.#taxFreeAllowance = taxFreeAllowance;
   }
 
   taxableIncome() {
@@ -17,15 +15,10 @@ class TaxInformation {
     return this.#taxPayable;
   }
 
-  taxFreeAllowance() {
-    return this.#taxFreeAllowance;
-  }
-
   add(taxInformation) {
     return new TaxInformation(
       this.#taxableIncome + taxInformation.taxableIncome(),
-      this.#taxPayable + taxInformation.taxPayable(),
-      this.#taxFreeAllowance + taxInformation.taxFreeAllowance()
+      this.#taxPayable + taxInformation.taxPayable()
     );
   }
 }

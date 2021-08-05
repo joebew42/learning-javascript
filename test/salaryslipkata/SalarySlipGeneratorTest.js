@@ -51,7 +51,7 @@ describe("SalarySlipGenerator", function () {
       assert.equal(taxInformation.taxableIncome(), 0);
       assert.equal(taxInformation.taxPayable(), 0);
       assert.equal(
-        taxInformation.taxFreeAllowance(),
+        salarySlip.taxFreeAllowance(),
         salarySlip._monthtlyGrossSalary
       );
     });
@@ -83,7 +83,7 @@ describe("SalarySlipGenerator", function () {
       let expectedTaxFreeAllowance =
         salarySlip._monthtlyGrossSalary - taxInformation.taxableIncome();
 
-      assert.equal(taxInformation.taxFreeAllowance(), expectedTaxFreeAllowance);
+      assert.equal(salarySlip.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
   });
 
@@ -123,7 +123,7 @@ describe("SalarySlipGenerator", function () {
       let expectedTaxFreeAllowance =
         salarySlip._monthtlyGrossSalary - taxInformation.taxableIncome();
 
-      assert.equal(taxInformation.taxFreeAllowance(), expectedTaxFreeAllowance);
+      assert.equal(salarySlip.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
   });
 });

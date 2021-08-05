@@ -95,10 +95,8 @@ class SalarySlipGenerator {
       taxableIncome,
       TAXABLE_INCOME_TAX_PERCENTAGE
     );
-    let taxFreeAllowance =
-      this.#monthlyGrossSalaryFrom(annualGrossSalary) - taxableIncome;
 
-    return new TaxInformation(taxableIncome, taxPayable, taxFreeAllowance);
+    return new TaxInformation(taxableIncome, taxPayable);
   }
 
   #higherTaxInformationFrom(annualGrossSalary) {
@@ -111,7 +109,7 @@ class SalarySlipGenerator {
       HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
     );
 
-    return new TaxInformation(taxableIncome, taxPayable, 0);
+    return new TaxInformation(taxableIncome, taxPayable);
   }
 
   #taxPayableFrom(taxableIncome, percentage) {
