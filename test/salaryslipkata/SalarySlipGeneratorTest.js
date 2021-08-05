@@ -116,7 +116,7 @@ describe("SalarySlipGenerator", function () {
       assert.equal(taxInformation.taxPayable(), 600.0);
     });
 
-    xit("has a tax-free allowance net of the taxable income", function () {
+    it("has a tax-free allowance net of the taxable income", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
       let taxInformation = salarySlip.taxInformation();
