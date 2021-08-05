@@ -25,7 +25,9 @@ class SalarySlipGenerator {
     let standardTaxInformation = this.#standardTaxInformationFrom(
       annualGrossSalary
     );
-    let higherTaxInformation = this.#higherTaxInformation(annualGrossSalary);
+    let higherTaxInformation = this.#higherTaxInformationFrom(
+      annualGrossSalary
+    );
 
     let taxInformation = standardTaxInformation.add(higherTaxInformation);
 
@@ -95,7 +97,7 @@ class SalarySlipGenerator {
     return this.#roundUp(taxableIncome * TAXABLE_INCOME_TAX_PERCENTAGE, 2);
   }
 
-  #higherTaxInformation(annualGrossSalary) {
+  #higherTaxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#higherTaxableIncomeFrom(annualGrossSalary);
 
     return new TaxInformation(taxableIncome, 0, 0);
