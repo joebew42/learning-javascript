@@ -87,29 +87,28 @@ class SalarySlipGenerator {
 
   #standardTaxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
-    let taxPayable = this.#taxPayableFrom(taxableIncome);
+    let taxPayable = this.#taxPayableFrom(
+      taxableIncome,
+      TAXABLE_INCOME_TAX_PERCENTAGE
+    );
     let taxFreeAllowance =
       this.#monthlyGrossSalaryFrom(annualGrossSalary) - taxableIncome;
 
     return new TaxInformation(taxableIncome, taxPayable, taxFreeAllowance);
   }
 
-  #taxPayableFrom(taxableIncome) {
-    return this.#roundUp(taxableIncome * TAXABLE_INCOME_TAX_PERCENTAGE, 2);
+  #taxPayableFrom(taxableIncome, percentage) {
+    return this.#roundUp(taxableIncome * percentage, 2);
   }
 
   #higherTaxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#higherTaxableIncomeFrom(annualGrossSalary);
-    let taxPayable = this.#higherTaxPayableFrom(taxableIncome);
+    let taxPayable = this.#taxPayableFrom(
+      taxableIncome,
+      HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
+    );
 
     return new TaxInformation(taxableIncome, taxPayable, 0);
-  }
-
-  #higherTaxPayableFrom(taxableIncome) {
-    return this.#roundUp(
-      taxableIncome * HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE,
-      2
-    );
   }
 
   #taxableIncomeFrom(annualGrossSalary) {
