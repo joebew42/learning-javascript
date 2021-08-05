@@ -22,7 +22,12 @@ class SalarySlipGenerator {
     let nationalInsuranceContribution = this.#nationalInsuranceContributionFrom(
       annualGrossSalary
     );
-    let taxInformation = this.#taxInformationFrom(annualGrossSalary);
+    let standardTaxInformation = this.#standardTaxInformationFrom(
+      annualGrossSalary
+    );
+    let higherTaxInformation = this.#higherTaxInformation(annualGrossSalary);
+
+    let taxInformation = standardTaxInformation.add(higherTaxInformation);
 
     return new SalarySlip(
       monthlyGrossSalary,
@@ -77,10 +82,8 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #taxInformationFrom(annualGrossSalary) {
-    let taxableIncome =
-      this.#taxableIncomeFrom(annualGrossSalary) +
-      this.#higherTaxableIncomeFrom(annualGrossSalary);
+  #standardTaxInformationFrom(annualGrossSalary) {
+    let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
     let taxPayable = this.#taxPayableFrom(taxableIncome);
     let taxFreeAllowance =
       this.#monthlyGrossSalaryFrom(annualGrossSalary) - taxableIncome;
@@ -90,6 +93,12 @@ class SalarySlipGenerator {
 
   #taxPayableFrom(taxableIncome) {
     return this.#roundUp(taxableIncome * TAXABLE_INCOME_TAX_PERCENTAGE, 2);
+  }
+
+  #higherTaxInformation(annualGrossSalary) {
+    let taxableIncome = this.#higherTaxableIncomeFrom(annualGrossSalary);
+
+    return new TaxInformation(taxableIncome, 0, 0);
   }
 
   #taxableIncomeFrom(annualGrossSalary) {
