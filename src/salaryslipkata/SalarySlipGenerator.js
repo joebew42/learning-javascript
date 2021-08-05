@@ -23,14 +23,7 @@ class SalarySlipGenerator {
     let nationalInsuranceContribution = this.#nationalInsuranceContributionFrom(
       annualGrossSalary
     );
-    let standardTaxInformation = this.#standardTaxInformationFrom(
-      annualGrossSalary
-    );
-    let higherTaxInformation = this.#higherTaxInformationFrom(
-      annualGrossSalary
-    );
-
-    let taxInformation = standardTaxInformation.add(higherTaxInformation);
+    let taxInformation = this.#taxInformationFrom(annualGrossSalary);
 
     return new SalarySlip(
       monthlyGrossSalary,
@@ -85,28 +78,35 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #standardTaxInformationFrom(annualGrossSalary) {
-    let taxableIncome = this.#taxableIncomeFrom(
+  #taxInformationFrom(annualGrossSalary) {
+    let standardTaxInformation = this.#calculateTaxInformationFor(
       annualGrossSalary,
       TAXABLE_INCOME_THRESHOLD,
+      TAXABLE_INCOME_TAX_PERCENTAGE,
       HIGHER_TAXABLE_INCOME_THRESHOLD
     );
-    let taxPayable = this.#taxPayableFrom(
-      taxableIncome,
-      TAXABLE_INCOME_TAX_PERCENTAGE
+    let higherTaxInformation = this.#calculateTaxInformationFor(
+      annualGrossSalary,
+      HIGHER_TAXABLE_INCOME_THRESHOLD,
+      HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
     );
-
-    return new TaxInformation(taxableIncome, taxPayable);
+    return standardTaxInformation.add(higherTaxInformation);
   }
 
-  #higherTaxInformationFrom(annualGrossSalary) {
+  #calculateTaxInformationFor(
+    annualGrossSalary,
+    taxableIncomeThreshold,
+    taxableIncomePercentage,
+    maximumTaxableIncome
+  ) {
     let taxableIncome = this.#taxableIncomeFrom(
       annualGrossSalary,
-      HIGHER_TAXABLE_INCOME_THRESHOLD
+      taxableIncomeThreshold,
+      maximumTaxableIncome
     );
     let taxPayable = this.#taxPayableFrom(
       taxableIncome,
-      HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
+      taxableIncomePercentage
     );
 
     return new TaxInformation(taxableIncome, taxPayable);
