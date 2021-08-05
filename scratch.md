@@ -2,7 +2,7 @@ Salary Slip Kata
 
 # DOING
 
-- [f]Taxable income (higher rate): Any amount of money earned above a gross annual salary of £43,000.00 is taxed at 40%
+- [f] Taxable income (higher rate): Any amount of money earned above a gross annual salary of £43,000.00 is taxed at 40%
   - Add a limit of 43000 for taxable income
   - Duplicate #taxInformationFrom for the higher rate tax
   - Sum up the higher rate tax information to the tax information
