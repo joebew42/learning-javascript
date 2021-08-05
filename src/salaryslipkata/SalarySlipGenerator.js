@@ -101,10 +101,6 @@ class SalarySlipGenerator {
     return new TaxInformation(taxableIncome, taxPayable, taxFreeAllowance);
   }
 
-  #taxPayableFrom(taxableIncome, percentage) {
-    return this.#roundUp(taxableIncome * percentage, 2);
-  }
-
   #higherTaxInformationFrom(annualGrossSalary) {
     let taxableIncome = this.#taxableIncomeFrom(
       annualGrossSalary,
