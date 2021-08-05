@@ -2,16 +2,12 @@ Salary Slip Kata
 
 # DOING
 
-- [f] Taxable income (higher rate): Any amount of money earned above a gross annual salary of £43,000.00 is taxed at 40%
-  - Duplicate #taxInformationFrom for the higher rate tax
-  - Sum up the higher rate tax information to the tax information
-  - Start adding the rule for the higher rate tax information
-
 # TODO
 
-- [r] Consider to extract a builder for #calculateNationalInsuranceContributionFor
-- [r] Consider to extract two methods object for the standardNationalInsuranceContribution and the higherNationalInsuranceContribution
-- [r] Consider to extract the #nationalInsuranceContributionFrom into a separate class
+- [r] Consider to extract two methods object for the `standardNationalInsuranceContribution` and the `higherNationalInsuranceContribution`
+- [r] Consider to extract the `nationalInsuranceContributionFrom` into a separate class
+- [r] Consider to extract two methods object for the `standardTaxInformation` and the `higherTaxInformation`
+- [r] Consider to extract the `taxInformationFrom` into a separate class
 
 ## Iteration 4: for an annual gross salary of £45,000.00
 
@@ -38,7 +34,7 @@ This employee pays a higher band of National Insurance and Income Tax.
     1. taxable income = 43000 - 11000 = 32000 / 12 = 2666.67
     2. taxable income = 45000 - 43000 =  2000 / 12 =  166.67
 
-    total taxable income = 2666.67 + 166.67 = 2833.34
+    total taxable income = 2666.67 + 166.67 = 2833.34 (it should be 2833.33?)
 
     1. tax payble = 2666.67 * 0.2 = 533.33
     2. tax payble =  166.67 * 0.4 =  66.67
