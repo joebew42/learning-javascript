@@ -12,6 +12,8 @@ const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
 const TAXABLE_INCOME_THRESHOLD = 11000;
 const TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 
+const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
+
 class SalarySlipGenerator {
   constructor() {}
 
@@ -90,6 +92,10 @@ class SalarySlipGenerator {
 
   #taxableIncomeFrom(annualGrossSalary) {
     if (annualGrossSalary <= TAXABLE_INCOME_THRESHOLD) return 0;
+
+    if (annualGrossSalary > HIGHER_TAXABLE_INCOME_THRESHOLD) {
+      annualGrossSalary = HIGHER_TAXABLE_INCOME_THRESHOLD;
+    }
 
     let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
       TAXABLE_INCOME_THRESHOLD,
