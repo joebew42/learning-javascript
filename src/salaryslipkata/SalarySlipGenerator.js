@@ -86,7 +86,11 @@ class SalarySlipGenerator {
   }
 
   #standardTaxInformationFrom(annualGrossSalary) {
-    let taxableIncome = this.#taxableIncomeFrom(annualGrossSalary);
+    let taxableIncome = this.#taxableIncomeFrom(
+      annualGrossSalary,
+      TAXABLE_INCOME_THRESHOLD,
+      HIGHER_TAXABLE_INCOME_THRESHOLD
+    );
     let taxPayable = this.#taxPayableFrom(
       taxableIncome,
       TAXABLE_INCOME_TAX_PERCENTAGE
@@ -102,7 +106,10 @@ class SalarySlipGenerator {
   }
 
   #higherTaxInformationFrom(annualGrossSalary) {
-    let taxableIncome = this.#higherTaxableIncomeFrom(annualGrossSalary);
+    let taxableIncome = this.#taxableIncomeFrom(
+      annualGrossSalary,
+      HIGHER_TAXABLE_INCOME_THRESHOLD
+    );
     let taxPayable = this.#taxPayableFrom(
       taxableIncome,
       HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
@@ -111,29 +118,19 @@ class SalarySlipGenerator {
     return new TaxInformation(taxableIncome, taxPayable, 0);
   }
 
-  #taxableIncomeFrom(annualGrossSalary) {
-    if (annualGrossSalary <= TAXABLE_INCOME_THRESHOLD) return 0;
+  #taxableIncomeFrom(
+    annualGrossSalary,
+    taxableIncomeThreshold,
+    maximumTaxableIncome
+  ) {
+    if (annualGrossSalary <= taxableIncomeThreshold) return 0;
 
-    if (annualGrossSalary > HIGHER_TAXABLE_INCOME_THRESHOLD) {
-      annualGrossSalary = HIGHER_TAXABLE_INCOME_THRESHOLD;
+    if (maximumTaxableIncome && annualGrossSalary > maximumTaxableIncome) {
+      annualGrossSalary = maximumTaxableIncome;
     }
 
     let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
-      TAXABLE_INCOME_THRESHOLD,
-      annualGrossSalary
-    );
-
-    return this.#roundUp(
-      amountEarnedAboveTaxableIncomeThreshold / MONTHS_IN_A_YEAR,
-      2
-    );
-  }
-
-  #higherTaxableIncomeFrom(annualGrossSalary) {
-    if (annualGrossSalary <= HIGHER_TAXABLE_INCOME_THRESHOLD) return 0;
-
-    let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
-      HIGHER_TAXABLE_INCOME_THRESHOLD,
+      taxableIncomeThreshold,
       annualGrossSalary
     );
 
