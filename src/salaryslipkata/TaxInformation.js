@@ -20,6 +20,14 @@ class TaxInformation {
   taxFreeAllowance() {
     return this.#taxFreeAllowance;
   }
+
+  add(taxInformation) {
+    return new TaxInformation(
+      this.#taxableIncome + taxInformation.taxableIncome(),
+      this.#taxPayable + taxInformation.taxPayable(),
+      this.#taxFreeAllowance + taxInformation.taxFreeAllowance()
+    );
+  }
 }
 
 export default TaxInformation;
