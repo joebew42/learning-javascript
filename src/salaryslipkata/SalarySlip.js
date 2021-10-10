@@ -1,7 +1,7 @@
 const NO_NATIONAL_INSURANCE_CONTRIBUTION = 0;
 
 class SalarySlip {
-  _monthtlyGrossSalary = 0;
+  _monthlyGrossSalary = 0;
   _nationalInsuranceContribution = 0;
   #taxInformation;
 
@@ -10,7 +10,7 @@ class SalarySlip {
     nationalInsuranceContribution,
     taxInformation
   ) {
-    this._monthtlyGrossSalary = monthlyGrossSalary;
+    this._monthlyGrossSalary = monthlyGrossSalary;
     this._nationalInsuranceContribution =
       nationalInsuranceContribution || NO_NATIONAL_INSURANCE_CONTRIBUTION;
 
@@ -22,7 +22,7 @@ class SalarySlip {
   }
 
   taxFreeAllowance() {
-    return this._monthtlyGrossSalary - this.#taxInformation.taxableIncome();
+    return this._monthlyGrossSalary - this.#taxInformation.taxableIncome();
   }
 }
 
