@@ -3,6 +3,7 @@ const NO_NATIONAL_INSURANCE_CONTRIBUTION = 0;
 class SalarySlip {
   _monthlyGrossSalary = 0;
   _nationalInsuranceContribution = 0;
+  #monthlyGrossSalary = 0;
   #taxInformation;
 
   constructor(
@@ -14,7 +15,12 @@ class SalarySlip {
     this._nationalInsuranceContribution =
       nationalInsuranceContribution || NO_NATIONAL_INSURANCE_CONTRIBUTION;
 
+    this.#monthlyGrossSalary = monthlyGrossSalary;
     this.#taxInformation = taxInformation;
+  }
+
+  monthlyGrossSalary() {
+    return this.#monthlyGrossSalary;
   }
 
   taxInformation() {
