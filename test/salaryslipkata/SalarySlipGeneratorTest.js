@@ -12,7 +12,7 @@ describe("SalarySlipGenerator", function () {
     it("calculates the monthly gross salary", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
-      assert.equal(salarySlip._monthlyGrossSalary, 671.67);
+      assert.equal(salarySlip.monthlyGrossSalary(), 671.67);
     });
 
     it("do not calculate the national insurance contribution", function () {
@@ -52,7 +52,7 @@ describe("SalarySlipGenerator", function () {
       assert.equal(taxInformation.taxPayable(), 0);
       assert.equal(
         salarySlip.taxFreeAllowance(),
-        salarySlip._monthlyGrossSalary
+        salarySlip.monthlyGrossSalary()
       );
     });
   });
@@ -81,7 +81,7 @@ describe("SalarySlipGenerator", function () {
 
       let taxInformation = salarySlip.taxInformation();
       let expectedTaxFreeAllowance =
-        salarySlip._monthlyGrossSalary - taxInformation.taxableIncome();
+        salarySlip.monthlyGrossSalary() - taxInformation.taxableIncome();
 
       assert.equal(salarySlip.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
@@ -117,7 +117,7 @@ describe("SalarySlipGenerator", function () {
 
       let taxInformation = salarySlip.taxInformation();
       let expectedTaxFreeAllowance =
-        salarySlip._monthlyGrossSalary - taxInformation.taxableIncome();
+        salarySlip.monthlyGrossSalary() - taxInformation.taxableIncome();
 
       assert.equal(salarySlip.taxFreeAllowance(), expectedTaxFreeAllowance);
     });
