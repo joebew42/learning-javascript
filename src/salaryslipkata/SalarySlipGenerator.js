@@ -24,11 +24,13 @@ class SalarySlipGenerator {
       annualGrossSalary
     );
     let taxInformation = this.#taxInformationFrom(annualGrossSalary);
+    let taxFreeAllowance = monthlyGrossSalary - taxInformation.taxableIncome();
 
     return new SalarySlip(
       monthlyGrossSalary,
       nationalInsuranceContribution,
-      taxInformation
+      taxInformation,
+      taxFreeAllowance
     );
   }
 

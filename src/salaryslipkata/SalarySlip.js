@@ -17,9 +17,7 @@ class SalarySlip {
 
     this.#monthlyGrossSalary = monthlyGrossSalary;
     this.#taxInformation = taxInformation;
-    this.#taxFreeAllowance =
-      taxFreeAllowance ||
-      this.monthlyGrossSalary() - this.#taxInformation.taxableIncome();
+    this.#taxFreeAllowance = taxFreeAllowance;
   }
 
   monthlyGrossSalary() {
