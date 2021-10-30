@@ -1,8 +1,8 @@
 class TaxInformation {
-  #taxableIncome = 0;
-  #taxPayable = 0;
+  #taxableIncome;
+  #taxPayable;
 
-  constructor(taxableIncome, taxPayable) {
+  constructor(taxableIncome = 0, taxPayable = 0) {
     this.#taxableIncome = taxableIncome;
     this.#taxPayable = taxPayable;
   }
