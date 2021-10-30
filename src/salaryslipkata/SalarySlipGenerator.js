@@ -15,6 +15,9 @@ const TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
 const HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
 
+const EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD = 100000;
+const EXCESS_HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
+
 class SalarySlipGenerator {
   constructor() {}
 
@@ -92,7 +95,19 @@ class SalarySlipGenerator {
       HIGHER_TAXABLE_INCOME_THRESHOLD,
       HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
     );
-    return standardTaxInformation.add(higherTaxInformation);
+    let excessHigherTaxInformation = this.#calculateTaxInformationFor(
+      annualGrossSalary,
+      EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD,
+      EXCESS_HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
+    );
+    excessHigherTaxInformation = new TaxInformation(
+      this.#roundUp(excessHigherTaxInformation.taxableIncome() / 2, 2),
+      this.#roundUp(excessHigherTaxInformation.taxPayable() / 2, 2)
+    );
+
+    return standardTaxInformation
+      .add(higherTaxInformation)
+      .add(excessHigherTaxInformation);
   }
 
   #calculateTaxInformationFor(
