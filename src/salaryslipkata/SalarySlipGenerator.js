@@ -83,26 +83,37 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #taxInformationFrom(annualGrossSalary) {
-    let standardTaxInformation = new TaxInformation();
-    if (annualGrossSalary > BASE_TAXABLE_INCOME_THRESHOLD) {
+  #isBaseTaxableIncome(annualGrossSalary) {
+    return annualGrossSalary > BASE_TAXABLE_INCOME_THRESHOLD;
+  }
+
+  #baseTaxInformationCalculate(annualGrossSalary) {
+    let baseTaxInformation = new TaxInformation();
+    if (this.#isBaseTaxableIncome(annualGrossSalary)) {
       let taxableIncome = this.#amountEarnedAbove(
         BASE_TAXABLE_INCOME_THRESHOLD,
         Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
       );
-      let taxableMonthlyIncome = this.#roundUp(
+      let taxableIncomePerMonth = this.#roundUp(
         taxableIncome / MONTHS_IN_A_YEAR,
         2
       );
-      let taxPayable = this.#roundUp(
-        taxableMonthlyIncome * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
+      let taxPayablePerMonth = this.#roundUp(
+        taxableIncomePerMonth * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
         2
       );
-      standardTaxInformation = new TaxInformation(
-        taxableMonthlyIncome,
-        taxPayable
+      baseTaxInformation = new TaxInformation(
+        taxableIncomePerMonth,
+        taxPayablePerMonth
       );
     }
+    return baseTaxInformation;
+  }
+
+  #taxInformationFrom(annualGrossSalary) {
+    let baseTaxInformation = this.#baseTaxInformationCalculate(
+      annualGrossSalary
+    );
 
     let higherTaxInformation = this.#calculateTaxInformationFor(
       annualGrossSalary,
@@ -119,7 +130,7 @@ class SalarySlipGenerator {
       this.#roundUp(excessHigherTaxInformation.taxPayable() / 2, 2)
     );
 
-    return standardTaxInformation
+    return baseTaxInformation
       .add(higherTaxInformation)
       .add(excessHigherTaxInformation);
   }
