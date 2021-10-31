@@ -9,30 +9,27 @@ const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
 
 class BaseTaxInformationCalculator {
   generate(annualGrossSalary) {
-    let baseTaxInformation = new TaxInformation();
-    if (this.#isBaseTaxableIncome(annualGrossSalary)) {
-      let taxableIncome = this.#amountEarnedAbove(
-        BASE_TAXABLE_INCOME_THRESHOLD,
-        Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
-      );
-      let taxableIncomePerMonth = this.#roundUp(
-        taxableIncome / MONTHS_IN_A_YEAR,
-        2
-      );
-      let taxPayablePerMonth = this.#roundUp(
-        taxableIncomePerMonth * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
-        2
-      );
-      baseTaxInformation = new TaxInformation(
-        taxableIncomePerMonth,
-        taxPayablePerMonth
-      );
+    if (this.#notTaxable(annualGrossSalary)) {
+      return new TaxInformation();
     }
-    return baseTaxInformation;
+
+    let taxableIncome = this.#amountEarnedAbove(
+      BASE_TAXABLE_INCOME_THRESHOLD,
+      Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
+    );
+    let taxableIncomePerMonth = this.#roundUp(
+      taxableIncome / MONTHS_IN_A_YEAR,
+      2
+    );
+    let taxPayablePerMonth = this.#roundUp(
+      taxableIncomePerMonth * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
+      2
+    );
+    return new TaxInformation(taxableIncomePerMonth, taxPayablePerMonth);
   }
 
-  #isBaseTaxableIncome(annualGrossSalary) {
-    return annualGrossSalary > BASE_TAXABLE_INCOME_THRESHOLD;
+  #notTaxable(annualGrossSalary) {
+    return annualGrossSalary < BASE_TAXABLE_INCOME_THRESHOLD;
   }
 
   #amountEarnedAbove(threshold, amount) {
