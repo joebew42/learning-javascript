@@ -1,4 +1,4 @@
-import TaxInformation from "./TaxInformation";
+import TaxInformation from "./TaxInformation.js";
 
 const MONTHS_IN_A_YEAR = 12;
 

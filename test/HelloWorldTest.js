@@ -1,6 +1,6 @@
-var expect = require('chai').expect;
+import { expect } from "chai";
 
-import HelloWorld from '../src/HelloWorld'
+import HelloWorld from "../src/HelloWorld.js";
 
 describe("HelloWorld", () => {
   describe("sayHello", () => {

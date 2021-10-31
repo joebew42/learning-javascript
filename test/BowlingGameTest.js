@@ -1,6 +1,6 @@
-var assert = require('chai').assert
+import { assert } from "chai";
 
-import BowlingGame from '../src/BowlingGame'
+import BowlingGame from "../src/BowlingGame.js";
 
 describe("BowlingGame", () => {
   var game;
@@ -16,13 +16,13 @@ describe("BowlingGame", () => {
   });
 
   it("all ones", () => {
-    rollMany(20, 1)
+    rollMany(20, 1);
 
     assert.equal(game.score(), 20);
   });
 
   it("one spare", () => {
-    rollSpare()
+    rollSpare();
     game.roll(3);
     rollMany(17, 0);
 

@@ -1,6 +1,6 @@
-import SalarySlip from "./SalarySlip";
-import TaxInformation from "./TaxInformation";
-import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator";
+import SalarySlip from "./SalarySlip.js";
+import TaxInformation from "./TaxInformation.js";
+import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator.js";
 
 const MONTHS_IN_A_YEAR = 12;
 

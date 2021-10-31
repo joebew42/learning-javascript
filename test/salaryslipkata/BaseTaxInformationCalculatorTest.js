@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import BaseTaxInformationCalculator from "../../src/salaryslipkata/BaseTaxInformationCalculator";
+import BaseTaxInformationCalculator from "../../src/salaryslipkata/BaseTaxInformationCalculator.js";
 
 describe("BaseTaxInformationCalculator", function () {
   let calculator = new BaseTaxInformationCalculator();
