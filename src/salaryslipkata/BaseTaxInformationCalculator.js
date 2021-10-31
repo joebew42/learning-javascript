@@ -13,6 +13,14 @@ class BaseTaxInformationCalculator {
       return TaxInformation.empty();
     }
 
+    return this.#calculateTaxes(annualGrossSalary);
+  }
+
+  #notTaxable(annualGrossSalary) {
+    return annualGrossSalary < BASE_TAXABLE_INCOME_THRESHOLD;
+  }
+
+  #calculateTaxes(annualGrossSalary) {
     let taxableIncome = this.#amountEarnedAbove(
       BASE_TAXABLE_INCOME_THRESHOLD,
       Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
@@ -26,10 +34,6 @@ class BaseTaxInformationCalculator {
       2
     );
     return new TaxInformation(taxableIncomePerMonth, taxPayablePerMonth);
-  }
-
-  #notTaxable(annualGrossSalary) {
-    return annualGrossSalary < BASE_TAXABLE_INCOME_THRESHOLD;
   }
 
   #amountEarnedAbove(threshold, amount) {
