@@ -28,7 +28,7 @@ class SalarySlipGenerator {
     let nationalInsuranceContribution = this.#nationalInsuranceContributionFrom(
       annualGrossSalary
     );
-    let taxInformation = this.#taxInformationFrom(annualGrossSalary);
+    let taxInformation = this.#calculateTaxInformationFor(annualGrossSalary);
     let taxFreeAllowance = monthlyGrossSalary - taxInformation.taxableIncome();
 
     return new SalarySlip(
@@ -85,7 +85,7 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #taxInformationFrom(annualGrossSalary) {
+  #calculateTaxInformationFor(annualGrossSalary) {
     return this.#taxCalculators.reduce(function (
       taxInformation,
       taxCalculator
