@@ -1,4 +1,5 @@
 import SalarySlip from "./SalarySlip.js";
+import TaxInformation from "./TaxInformation.js";
 import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator.js";
 import HighTaxInformationCalculator from "./HighTaxInformationCalculator.js";
 import ExcessHighTaxInformationCalculator from "./ExcessHighTaxInformationCalculator.js";
@@ -12,7 +13,15 @@ const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 43000;
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
 
 class SalarySlipGenerator {
-  constructor() {}
+  #taxCalculators = [];
+
+  constructor(taxCalculators) {
+    this.#taxCalculators = taxCalculators || [
+      new BaseTaxInformationCalculator(),
+      new HighTaxInformationCalculator(),
+      new ExcessHighTaxInformationCalculator(),
+    ];
+  }
 
   generateFor(annualGrossSalary) {
     let monthlyGrossSalary = this.#monthlyGrossSalaryFrom(annualGrossSalary);
@@ -77,21 +86,13 @@ class SalarySlipGenerator {
   }
 
   #taxInformationFrom(annualGrossSalary) {
-    let baseTaxInformation = new BaseTaxInformationCalculator().calculateFor(
-      annualGrossSalary
-    );
-
-    let higherTaxInformation = new HighTaxInformationCalculator().calculateFor(
-      annualGrossSalary
-    );
-
-    let excessHigherTaxInformation = new ExcessHighTaxInformationCalculator().calculateFor(
-      annualGrossSalary
-    );
-
-    return baseTaxInformation
-      .add(higherTaxInformation)
-      .add(excessHigherTaxInformation);
+    return this.#taxCalculators.reduce(function (
+      taxInformation,
+      taxCalculator
+    ) {
+      return taxInformation.add(taxCalculator.calculateFor(annualGrossSalary));
+    },
+    TaxInformation.empty());
   }
 
   #amountEarnedAbove(threshold, amount) {
