@@ -2,7 +2,7 @@ Salary Slip Kata
 
 # DOING
 
-- [r] Extract `BaseTaxInformation#calculate` ?
+- [r] Write tests for `BaseTaxInformation#generate`
 
 # TODO
 
