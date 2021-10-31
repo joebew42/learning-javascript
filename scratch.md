@@ -2,9 +2,10 @@ Salary Slip Kata
 
 # DOING
 
+- [ ] Learn how to run coverage with instanbul
+
 # TODO
 
-- [ ] Learn how to run coverage with instanbul
 - [ ] Fix issues when using ESM syntax to import modules
 - [r] Extract collaborator for higher taxes
 - [r] Extract collaborator for excess higher taxes
