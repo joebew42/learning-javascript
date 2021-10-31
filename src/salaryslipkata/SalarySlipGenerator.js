@@ -1,7 +1,7 @@
 import SalarySlip from "./SalarySlip.js";
-import TaxInformation from "./TaxInformation.js";
 import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator.js";
 import HighTaxInformationCalculator from "./HighTaxInformationCalculator.js";
+import ExcessHighTaxInformationCalculator from "./ExcessHighTaxInformationCalculator.js";
 
 const MONTHS_IN_A_YEAR = 12;
 
@@ -10,9 +10,6 @@ const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 43000;
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
-
-const EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD = 100000;
-const EXCESS_HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
 
 class SalarySlipGenerator {
   constructor() {}
@@ -88,64 +85,13 @@ class SalarySlipGenerator {
       annualGrossSalary
     );
 
-    let excessHigherTaxInformation = this.#calculateTaxInformationFor(
-      annualGrossSalary,
-      EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD,
-      EXCESS_HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
-    );
-    excessHigherTaxInformation = new TaxInformation(
-      this.#roundUp(excessHigherTaxInformation.taxableIncome() / 2, 2),
-      this.#roundUp(excessHigherTaxInformation.taxPayable() / 2, 2)
+    let excessHigherTaxInformation = new ExcessHighTaxInformationCalculator().calculateFor(
+      annualGrossSalary
     );
 
     return baseTaxInformation
       .add(higherTaxInformation)
       .add(excessHigherTaxInformation);
-  }
-
-  #calculateTaxInformationFor(
-    annualGrossSalary,
-    taxableIncomeThreshold,
-    taxableIncomePercentage,
-    maximumTaxableIncome
-  ) {
-    let taxableIncome = this.#taxableIncomeFrom(
-      annualGrossSalary,
-      taxableIncomeThreshold,
-      maximumTaxableIncome
-    );
-    let taxPayable = this.#taxPayableFrom(
-      taxableIncome,
-      taxableIncomePercentage
-    );
-
-    return new TaxInformation(taxableIncome, taxPayable);
-  }
-
-  #taxPayableFrom(taxableIncome, percentage) {
-    return this.#roundUp(taxableIncome * percentage, 2);
-  }
-
-  #taxableIncomeFrom(
-    annualGrossSalary,
-    taxableIncomeThreshold,
-    maximumTaxableIncome
-  ) {
-    if (annualGrossSalary <= taxableIncomeThreshold) return 0;
-
-    if (maximumTaxableIncome && annualGrossSalary > maximumTaxableIncome) {
-      annualGrossSalary = maximumTaxableIncome;
-    }
-
-    let amountEarnedAboveTaxableIncomeThreshold = this.#amountEarnedAbove(
-      taxableIncomeThreshold,
-      annualGrossSalary
-    );
-
-    return this.#roundUp(
-      amountEarnedAboveTaxableIncomeThreshold / MONTHS_IN_A_YEAR,
-      2
-    );
   }
 
   #amountEarnedAbove(threshold, amount) {
