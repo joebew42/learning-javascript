@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --recursive",
-    "coverage": "c8 --reporter=text npm run test"
+    "coverage": "c8 --reporter=json --reporter=text npm run test"
   },
   "repository": {
     "type": "git",
