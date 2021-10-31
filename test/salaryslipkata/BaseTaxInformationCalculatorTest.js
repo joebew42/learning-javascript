@@ -9,7 +9,7 @@ describe("BaseTaxInformationCalculator", function () {
       let annualGrossSalary = 11000;
 
       it("is not considered a taxable income", function () {
-        let taxInformation = calculator.generate(annualGrossSalary);
+        let taxInformation = calculator.calculateFor(annualGrossSalary);
 
         assert.equal(taxInformation.taxableIncome(), 0);
         assert.equal(taxInformation.taxPayable(), 0);
@@ -21,7 +21,7 @@ describe("BaseTaxInformationCalculator", function () {
       let taxInformation;
 
       this.beforeAll(function () {
-        taxInformation = calculator.generate(annualGrossSalary);
+        taxInformation = calculator.calculateFor(annualGrossSalary);
       });
 
       it("is considered taxable income", function () {
@@ -35,8 +35,8 @@ describe("BaseTaxInformationCalculator", function () {
 
     describe("for any amount earned above 43000", function () {
       it("tax information doesn't change", function () {
-        let taxInformationFor43000 = calculator.generate(43000);
-        let taxInformationFor50000 = calculator.generate(50000);
+        let taxInformationFor43000 = calculator.calculateFor(43000);
+        let taxInformationFor50000 = calculator.calculateFor(50000);
 
         assert.equal(
           taxInformationFor43000.taxableIncome(),

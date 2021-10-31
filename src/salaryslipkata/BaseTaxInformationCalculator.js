@@ -8,7 +8,7 @@ const BASE_TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
 
 class BaseTaxInformationCalculator {
-  generate(annualGrossSalary) {
+  calculateFor(annualGrossSalary) {
     if (this.#notTaxable(annualGrossSalary)) {
       return TaxInformation.empty();
     }

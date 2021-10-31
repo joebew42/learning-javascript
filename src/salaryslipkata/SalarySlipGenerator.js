@@ -82,7 +82,7 @@ class SalarySlipGenerator {
   }
 
   #taxInformationFrom(annualGrossSalary) {
-    let baseTaxInformation = new BaseTaxInformationCalculator().generate(
+    let baseTaxInformation = new BaseTaxInformationCalculator().calculateFor(
       annualGrossSalary
     );
 
