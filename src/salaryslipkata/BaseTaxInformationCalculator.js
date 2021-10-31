@@ -10,7 +10,7 @@ const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
 class BaseTaxInformationCalculator {
   generate(annualGrossSalary) {
     if (this.#notTaxable(annualGrossSalary)) {
-      return new TaxInformation();
+      return TaxInformation.empty();
     }
 
     let taxableIncome = this.#amountEarnedAbove(

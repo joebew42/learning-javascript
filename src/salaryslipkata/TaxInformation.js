@@ -1,4 +1,8 @@
 class TaxInformation {
+  static empty() {
+    return new TaxInformation();
+  }
+
   #taxableIncome;
   #taxPayable;
 
