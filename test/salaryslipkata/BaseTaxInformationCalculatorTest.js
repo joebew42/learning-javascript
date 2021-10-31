@@ -4,7 +4,7 @@ import BaseTaxInformationCalculator from "../../src/salaryslipkata/BaseTaxInform
 describe("BaseTaxInformationCalculator", function () {
   let calculator = new BaseTaxInformationCalculator();
 
-  describe("#generate", function () {
+  describe("#calculateFor", function () {
     describe("any amount earned below 11000", function () {
       let annualGrossSalary = 11000;
 
