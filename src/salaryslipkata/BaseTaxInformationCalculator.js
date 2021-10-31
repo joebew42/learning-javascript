@@ -2,10 +2,10 @@ import TaxInformation from "./TaxInformation.js";
 
 const MONTHS_IN_A_YEAR = 12;
 
-const BASE_TAXABLE_INCOME_THRESHOLD = 11000;
-const BASE_TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
+const TAXABLE_INCOME_THRESHOLD = 11000;
+const TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 
-const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
+const TAXABLE_INCOME_THRESHOLD_LIMIT = 43000;
 
 class BaseTaxInformationCalculator {
   calculateFor(annualGrossSalary) {
@@ -17,20 +17,20 @@ class BaseTaxInformationCalculator {
   }
 
   #notTaxable(annualGrossSalary) {
-    return annualGrossSalary < BASE_TAXABLE_INCOME_THRESHOLD;
+    return annualGrossSalary < TAXABLE_INCOME_THRESHOLD;
   }
 
   #calculateTaxes(annualGrossSalary) {
     let taxableIncome = this.#amountEarnedAbove(
-      BASE_TAXABLE_INCOME_THRESHOLD,
-      Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
+      TAXABLE_INCOME_THRESHOLD,
+      Math.min(annualGrossSalary, TAXABLE_INCOME_THRESHOLD_LIMIT)
     );
     let taxableIncomePerMonth = this.#roundUp(
       taxableIncome / MONTHS_IN_A_YEAR,
       2
     );
     let taxPayablePerMonth = this.#roundUp(
-      taxableIncomePerMonth * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
+      taxableIncomePerMonth * TAXABLE_INCOME_TAX_PERCENTAGE,
       2
     );
     return new TaxInformation(taxableIncomePerMonth, taxPayablePerMonth);
