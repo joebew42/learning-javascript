@@ -1,5 +1,6 @@
 import SalarySlip from "./SalarySlip";
 import TaxInformation from "./TaxInformation";
+import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator";
 
 const MONTHS_IN_A_YEAR = 12;
 
@@ -8,9 +9,6 @@ const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 43000;
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
-
-const BASE_TAXABLE_INCOME_THRESHOLD = 11000;
-const BASE_TAXABLE_INCOME_TAX_PERCENTAGE = 0.2;
 
 const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
 const HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
@@ -83,35 +81,8 @@ class SalarySlipGenerator {
     return nationalInsuranceContribution;
   }
 
-  #isBaseTaxableIncome(annualGrossSalary) {
-    return annualGrossSalary > BASE_TAXABLE_INCOME_THRESHOLD;
-  }
-
-  #baseTaxInformationCalculate(annualGrossSalary) {
-    let baseTaxInformation = new TaxInformation();
-    if (this.#isBaseTaxableIncome(annualGrossSalary)) {
-      let taxableIncome = this.#amountEarnedAbove(
-        BASE_TAXABLE_INCOME_THRESHOLD,
-        Math.min(annualGrossSalary, HIGHER_TAXABLE_INCOME_THRESHOLD)
-      );
-      let taxableIncomePerMonth = this.#roundUp(
-        taxableIncome / MONTHS_IN_A_YEAR,
-        2
-      );
-      let taxPayablePerMonth = this.#roundUp(
-        taxableIncomePerMonth * BASE_TAXABLE_INCOME_TAX_PERCENTAGE,
-        2
-      );
-      baseTaxInformation = new TaxInformation(
-        taxableIncomePerMonth,
-        taxPayablePerMonth
-      );
-    }
-    return baseTaxInformation;
-  }
-
   #taxInformationFrom(annualGrossSalary) {
-    let baseTaxInformation = this.#baseTaxInformationCalculate(
+    let baseTaxInformation = new BaseTaxInformationCalculator().generate(
       annualGrossSalary
     );
 

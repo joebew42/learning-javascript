@@ -2,6 +2,8 @@ Salary Slip Kata
 
 # DOING
 
+- [r] Extract `BaseTaxInformation#calculate` ?
+
 # TODO
 
 - [f] Start the iteration 5
