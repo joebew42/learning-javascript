@@ -1,6 +1,7 @@
 import SalarySlip from "./SalarySlip.js";
 import TaxInformation from "./TaxInformation.js";
 import BaseTaxInformationCalculator from "./BaseTaxInformationCalculator.js";
+import HighTaxInformationCalculator from "./HighTaxInformationCalculator.js";
 
 const MONTHS_IN_A_YEAR = 12;
 
@@ -9,9 +10,6 @@ const NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.12;
 
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_THRESHOLD = 43000;
 const HIGHER_NATIONAL_INSURANCE_CONTRIBUTION_PERCENTAGE = 0.02;
-
-const HIGHER_TAXABLE_INCOME_THRESHOLD = 43000;
-const HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
 
 const EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD = 100000;
 const EXCESS_HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE = 0.4;
@@ -86,11 +84,10 @@ class SalarySlipGenerator {
       annualGrossSalary
     );
 
-    let higherTaxInformation = this.#calculateTaxInformationFor(
-      annualGrossSalary,
-      HIGHER_TAXABLE_INCOME_THRESHOLD,
-      HIGHER_TAXABLE_INCOME_TAX_PERCENTAGE
+    let higherTaxInformation = new HighTaxInformationCalculator().calculateFor(
+      annualGrossSalary
     );
+
     let excessHigherTaxInformation = this.#calculateTaxInformationFor(
       annualGrossSalary,
       EXCESS_HIGHER_TAXABLE_INCOME_THRESHOLD,
