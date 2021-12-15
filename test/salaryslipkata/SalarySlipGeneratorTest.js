@@ -151,8 +151,6 @@ describe("SalarySlipGenerator", function () {
     it("has a tax-free allowance that starts decreasing by 1 for each 2", function () {
       let salarySlip = salarySlipGenerator.generateFor(annualGrossSalary);
 
-      let taxInformation = salarySlip.taxInformation();
-
       assert.equal(salarySlip.taxFreeAllowance(), 875.0);
     });
   });
