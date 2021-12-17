@@ -16,6 +16,12 @@ npm install
 npm test
 ```
 
+3. Run all the tests with coverage reports
+
+```
+npm run coverage
+```
+
 ## Nice to explore later
 
 - Bank Kata https://github.com/sandromancuso/Bank-kata
